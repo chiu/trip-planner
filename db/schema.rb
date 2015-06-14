@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150614025929) do
+ActiveRecord::Schema.define(version: 20150614205955) do
+
+  create_table "journeys", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "trip_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "trips", force: :cascade do |t|
     t.string   "title"
@@ -19,8 +26,48 @@ ActiveRecord::Schema.define(version: 20150614025929) do
     t.datetime "end_time"
     t.text     "description"
     t.string   "trip_image_url"
+    t.string   "origin_lat"
+    t.string   "origin_lng"
+    t.string   "dest_lat"
+    t.string   "dest_lng"
+    t.boolean  "hotel"
+    t.boolean  "food"
+    t.boolean  "entertainment"
+    t.boolean  "monument"
+    t.boolean  "nature"
+    t.boolean  "camping"
+    t.integer  "radius"
+    t.boolean  "public"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end
+
+  create_table "users", force: :cascade do |t|
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+  end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+
+  create_table "waypoints", force: :cascade do |t|
+    t.string   "lat"
+    t.string   "lng"
+    t.integer  "trip_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "waypoints", ["trip_id"], name: "index_waypoints_on_trip_id"
 
 end

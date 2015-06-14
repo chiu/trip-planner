@@ -1,8 +1,15 @@
 Rails.application.routes.draw do
 
-  resources :trips
-  root to: 'trips#index'
 
+  devise_for :users
+
+
+  resources :trips do
+   resources :waypoints, only: [:new, :create]
+ end 
+
+
+ root to: 'trips#index'
 
   # get 'trips/index'
 
