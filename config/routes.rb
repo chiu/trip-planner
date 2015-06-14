@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
 
   resources :trips
+  root to: 'trips#index'
 
 
   # get 'trips/index'
+
 
   # get 'trips/show'
 

@@ -1,15 +1,128 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any styles
- * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
- * file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+/*#header {
+  min-width: 100%;
+  height: 110%;
+  position: absolute;
+  margin-top: -130px;
+  margin-right: 10%;
+}
+*/
+
+/*styling for the btns at the top of the index page*/
+
+#index-btns {
+  float: right;
+  margin-right: 5px;
+  margin-top: 10px;
+}
+
+ul.dropdown-menu.pull-right {
+  background-color: #E6E6E6;
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+ul.dropdown-menu.pull-right input {
+  border-radius: 5px;
+}
+
+#login-username,
+#login-password,
+#login-btn, 
+#sign-up-email, 
+#sign-up-username,
+#sign-up-password,
+#sign-up-btn {
+  width: 250px;
+  height: 38px;
+  margin-top: 2%;
+}
+
+/*styling for the form in the the center of the index page*/
+
+#index-start {
+  width: 250px;
+  height: 38px;
+  margin-top: 0%;
+  border-radius: 5px;
+  font-size: 18px;
+}
+
+#index-end {
+  width: 250px;
+  height: 38px;
+  border-radius: 5px;
+  font-size: 18px;
+}
+
+#trip {
+  text-align: center;
+}
+
+#start-trip-btn {
+  width: 250px;
+  height: 38px;
+  border-radius: 5px;
+  font-size: 18px;
+  margin-bottom: 3%;
+  margin-top: 3%;
+}
+
+#background {
+  background-image: url("http://www.kucuu.com/desktop-wallpaper-home/The-Road-desktop-wallpaper-1366x768.jpg");
+}
+
+#main-hdr {
+  text-align: center;
+  color: #000;
+  font-size: 50px;
+  margin-top: 15%;
+}
+
+#plan-trip {
+  text-align: center;
+  color: #000;
+  font-size: 30px;
+  margin-top: 1%;
+}
+
+/*styling for the attractions and checkboxes on the index page*/
+
+#hotel {
+  height: 40px;
+  width: 40px;
+
+}
+
+#food,
+#entertainment,
+#historical,
+#outdoors,
+#camping {
+  height: 40px;
+  width: 40px;
+}
+
+#checkbox-hotel,
+#checkbox-food,
+#checkbox-entertainment,
+#checkbox-historical,
+#checkbox-outdoors,
+#checkbox-camping {
+  width: 1em;
+  height: 1em;
+}
+
+/*#icons {
+  border: 2px solid black;
+  background-color: #E6E6E6;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  border-radius: 5px;
+  margin: 0 auto;
+}*/
+
+
+
+
+
+
