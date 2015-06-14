@@ -190,14 +190,15 @@
 <body>
   hi
   <%= form_for @trip do |f| %>
+   <div>
+    <%= f.label "endLocationInput" %><br>
+    <%= f.text_field "dest_lat" %>
+  </div>
   <div>
     <%= f.label "startLocationInput" %><br>
     <%= f.text_field "origin_lat" %>
   </div>
-    <div>
-    <%= f.label "endLocationInput" %><br>
-    <%= f.text_field "dest_lat" %>
-  </div>
+   
   <div><%= f.submit "Submit" %></div>
   <% end %>
 

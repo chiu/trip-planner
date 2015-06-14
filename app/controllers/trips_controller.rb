@@ -48,25 +48,10 @@ protected
 
 def trip_params
   params.require(:trip).permit(
-    :title, :start_time, :end_time, :description, :trip_image_url, :origin_lat, :origin_lng)
+
+    :title, :start_time, :end_time, :description, :trip_image_url, :origin_lat, :origin_lng, :dest_lat, :dest_lng, :hotel, :food, :entertainment, :monument, :nature, :camping, :radius, :public, :created_at, :updated_at
+    )
 end
 end
-# :title
-#    :start_time, :end_time:
-#        :description:
-#      :trip_image_url:
-#      :origin_lat:
-#      :origin_lng:
-#      :dest_lat:
-#      :dest_lng:
-#     :hotel:
-#     :food:
-#     :entertainment:
-#     :monument:
-#     :nature:
-#     :camping:
-#     :radius:
-#     :public:
-#    :created_at:     null: false
-#    :updated_at:   
+
 
