@@ -1,2 +1,213 @@
 <h1>Trips#new</h1>
 <p>Find me in app/views/trips/new.html.erb</p>
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+  <meta charset="utf-8">
+  <title>Draggable directions</title>
+  <style>
+    html,
+    body,
+    #map-canvas {
+      height: 100%;
+      margin: 0px;
+      padding: 0px
+    }
+    
+    .controls {
+      margin-top: 16px;
+      border: 1px solid transparent;
+      border-radius: 2px 0 0 2px;
+      box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      height: 32px;
+      outline: none;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    }
+    
+    #pac-input {
+      background-color: #fff;
+      font-family: Roboto;
+      font-size: 15px;
+      font-weight: 300;
+      margin-left: 12px;
+      padding: 0 11px 0 13px;
+      text-overflow: ellipsis;
+      width: 400px;
+    }
+    
+    #pac-input:focus {
+      border-color: #4d90fe;
+    }
+    
+    .pac-container {
+      font-family: Roboto;
+    }
+    
+    #type-selector {
+      color: #fff;
+      background-color: #4d90fe;
+      padding: 5px 11px 0px 11px;
+    }
+    
+    #type-selector label {
+      font-family: Roboto;
+      font-size: 13px;
+      font-weight: 300;
+    }
+  </style>
+
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script>
+    var rendererOptions = {
+      draggable: true
+    };
+    var directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);;
+    var directionsService = new google.maps.DirectionsService();
+    var map;
+
+    var australia = new google.maps.LatLng(-25.274398, 133.775136);
+
+    function initialize() {
+
+        // var startlocation = jQuery("#startLocationInput").val();
+        // console.log("start:", startlocation);
+
+        var mapOptions = {
+          zoom: 7,
+          center: australia
+        };
+        map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+        directionsDisplay.setMap(map);
+        directionsDisplay.setPanel(document.getElementById('directionsPanel'));
+
+        google.maps.event.addListener(directionsDisplay, 'directions_changed', function() {
+          computeTotalDistance(directionsDisplay.getDirections());
+          showWaypoints(directionsDisplay.getDirections());
+
+        });
+
+
+
+
+
+        // calcRoute();
+      }
+
+
+      function drawDirections() {
+
+        console.log("draw directions happened");
+
+        var startlocation = $("#startLocationInput").val();
+        console.log("start:", startlocation);
+
+
+        var endlocation = $("#endLocationInput").val();
+        console.log("end:", endlocation);
+
+        // var mapOptions = {
+        //     zoom: 7,
+        //     center: australia
+        // };
+        // // map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+        // directionsDisplay.setMap(map);
+        // directionsDisplay.setPanel(document.getElementById('directionsPanel'));
+
+        // google.maps.event.addListener(directionsDisplay, 'directions_changed', function() {
+        //     computeTotalDistance(directionsDisplay.getDirections());
+        // });
+
+        // calcRoute('Sydney, NSW', );
+        // calcRoute('Sydney, NSW', 'Bourke, NSW');
+        calcRoute(startlocation, endlocation);
+
+
+
+      }
+
+      function calcRoute(origin_argument, destination_argument) {
+
+        var request = {
+          origin: origin_argument,
+          destination: destination_argument,
+            // origin: 'Sydney, NSW',
+            // origin: 'Melbourne, ',
+            // destination: 'Melbourne, NSW',
+            waypoints: [{
+              location: 'Vancouver, BC'
+            }, {
+              location: 'Richmond, BC'
+            }],
+            travelMode: google.maps.TravelMode.DRIVING
+          };
+          directionsService.route(request, function(response, status) {
+            if (status == google.maps.DirectionsStatus.OK) {
+              directionsDisplay.setDirections(response);
+            }
+          });
+        }
+
+
+        function showWaypoints(result) {
+          var myroute = result.routes[0];
+          for (var i = 0; i < myroute.legs.length; i++) {
+            // total += myroute.legs[i].distance.value;
+            console.log(myroute.legs[i]);
+          }
+
+
+        }
+
+        function computeTotalDistance(result) {
+          var total = 0;
+          var myroute = result.routes[0];
+          for (var i = 0; i < myroute.legs.length; i++) {
+            total += myroute.legs[i].distance.value;
+          }
+          total = total / 1000.0;
+          document.getElementById('total').innerHTML = total + ' km';
+        }
+        // $(document).on("click", "awesomeButton",(drawDirections);
+
+    //    $(document).on("click","#awesomeButton",function() {
+    //     alert("click bound to document listening for #test-element");
+    // });
+    // retrieve routes.legs[0].start_address
+
+
+    $(document).on("click", "#awesomeButton", drawDirections);
+
+    google.maps.event.addDomListener(window, 'load', initialize);
+  </script>
+</head>
+
+<body>
+  hi
+  <%= form_for @trip do |f| %>
+   <div>
+    <%= f.label "endLocationInput" %><br>
+    <%= f.text_field "dest_lat" %>
+  </div>
+  <div>
+    <%= f.label "startLocationInput" %><br>
+    <%= f.text_field "origin_lat" %>
+  </div>
+   
+  <div><%= f.submit "Submit" %></div>
+  <% end %>
+
+  <button id="awesomeButton">Click me </button>
+  <button id="showWaypointButton"> show me the waypoints </button>
+  <div id="map-canvas" style="float:left;width:70%; height:100%"></div>
+  <div id="directionsPanel" style="float:right;width:30%;height 100%">
+    <p>Total Distance: <span id="total"></span></p>
+  </div>
+</body>
+
+</html>
