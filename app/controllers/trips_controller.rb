@@ -1,55 +1,72 @@
 class TripsController < ApplicationController
 
-      # root to: "trips#index"
-      
-      def index
-        @trips = Trip.all
-      end
+# root to: "trips#index"
 
-      def show
-        @trip = Trip.find(params[:id])
-      end
+def index
+  @trips = Trip.all
+end
 
-      def new
-        @trip = Trip.new
-      end
+def show
+  @trip = Trip.find(params[:id])
+end
 
-      def edit
-        @trip = Trip.find(params[:id])
-      end
+def new
+  @trip = Trip.new
+end
 
-      def create
-        @trip = Trip.new(trip_params)
+def edit
+  @trip = Trip.find(params[:id])
+end
 
-        if @trip.save
-          redirect_to trips_path
-        else
-          render :new
-        end
-      end
+def create
+  @trip = Trip.new(trip_params)
 
-      def update
-        @trip = Trip.find(params[:id])
+  if @trip.save
+    redirect_to trips_path
+  else
+    render :new
+  end
+end
 
-        if @trip.update_attributes(trip_params)
-          redirect_to trip_path(@trip)
-        else
-          render :edit
-        end
-      end
+def update
+  @trip = Trip.find(params[:id])
 
-      def destroy
-        @trip = Trip.find(params[:id])
-        @trip.destroy
-        redirect_to trips_path
-      end
+  if @trip.update_attributes(trip_params)
+    redirect_to trip_path(@trip)
+  else
+    render :edit
+  end
+end
 
-      protected
+def destroy
+  @trip = Trip.find(params[:id])
+  @trip.destroy
+  redirect_to trips_path
+end
 
-      def trip_params
-        params.require(:trip).permit(
-          :title, :start_time, :end_time, :description, :trip_image_url
-        )
-      end
+protected
 
-    end
+def trip_params
+  params.require(:trip).permit(
+    :title, :start_time, :end_time, :description, :trip_image_url, :origin_lat, :origin_lng)
+end
+end
+# :title
+#    :start_time, :end_time:
+#        :description:
+#      :trip_image_url:
+#      :origin_lat:
+#      :origin_lng:
+#      :dest_lat:
+#      :dest_lng:
+#     :hotel:
+#     :food:
+#     :entertainment:
+#     :monument:
+#     :nature:
+#     :camping:
+#     :radius:
+#     :public:
+#    :created_at:     null: false
+#    :updated_at:   
+
