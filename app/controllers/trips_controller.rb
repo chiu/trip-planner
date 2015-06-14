@@ -1,5 +1,7 @@
 class TripsController < ApplicationController
 
+      root to: "home#index"
+      
       def index
         @trips = Trip.all
       end
