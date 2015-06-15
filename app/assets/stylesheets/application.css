@@ -11,7 +11,7 @@
 
 #index-btns {
   float: right;
-  margin-right: 5px;
+  margin-right: 10px;
   margin-top: 10px;
 }
 
@@ -73,16 +73,19 @@ ul.dropdown-menu.pull-right input {
 
 #main-hdr {
   text-align: center;
-  color: #000;
-  font-size: 50px;
+  color: #61C7EB;
+  font-size: 70px;
   margin-top: 15%;
+  margin-bottom: 15%;
+  font-family: 'Lobster', cursive;
+  text-shadow: 5px 5px 5px #336699;
 }
 
 #plan-trip {
   text-align: center;
   color: #000;
   font-size: 30px;
-  margin-top: 1%;
+  margin-bottom: 5%;
 }
 
 /*styling for the attractions and checkboxes on the index page*/
