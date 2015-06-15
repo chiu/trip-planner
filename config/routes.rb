@@ -1,6 +1,14 @@
 Rails.application.routes.draw do
 
 
+  get 'waypoints/index'
+
+  get 'waypoints/show'
+
+  get 'waypoints/new'
+
+  get 'waypoints/edit'
+
   devise_for :users
 
 
