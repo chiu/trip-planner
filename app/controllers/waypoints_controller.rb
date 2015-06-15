@@ -19,16 +19,29 @@ def edit
   @waypoint = Waypoint.find(params[:id])
 end
 
-def create
-  @waypoint = Waypoint.new(waypoint_params)
+# def create
+#   @waypoint = Waypoint.new(waypoint_params)
 
-  if @waypoint.save
-    # redirect_to waypoints_path
-    render :new
-  else
-    render :new
+#   if @waypoint.save
+#     # redirect_to waypoints_path
+#     render :new
+#   else
+#     render :new
+#   end
+# end
+
+def create
+    @waypoint = @trip.waypoints.build(waypoint_params)
+    # @waypoint.user_id = current_user.id
+
+    if @waypoint.save
+      redirect_to @trip, notice: "Review created successfully"
+    else
+      render :new
+    end
   end
-end
+
+
 
 def update
   @waypoint = Waypoint.find(params[:id])
