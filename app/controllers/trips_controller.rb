@@ -12,8 +12,8 @@ end
 
 def new
   @trip = Trip.new
-  @waypoint = Waypoint.new
-  @waypoint.trip_id = params[:id]
+  # @waypoint = Waypoint.new
+  # @waypoint.trip_id = params[:id]
 end
 
 def edit
