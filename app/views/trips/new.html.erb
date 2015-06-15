@@ -104,11 +104,11 @@
 
         console.log("draw directions happened");
 
-        var startlocation = $("label[for='startLocationInput']").val();
+        var startlocation = $("#origin_field").val();
         console.log("start:", startlocation);
 
 
-        var endlocation = $("#endLocationInput").val();
+        var endlocation = $("#dest_field").val();
         console.log("end:", endlocation);
 
         // var mapOptions = {
@@ -218,7 +218,7 @@
   <div><%= f.submit "Submit" %></div>
   <% end %>
 
-  <button id="awesomeButton"> print in console </button>
+  <button id="awesomeButton"> calculate route and print in console </button>
   <button id="showWaypointButton"> show me the waypoints </button>
   <div id="map-canvas" style="float:left;width:70%; height:100%"></div>
   <div id="directionsPanel" style="float:right;width:30%;height 100%">
