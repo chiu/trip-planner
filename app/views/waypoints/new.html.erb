@@ -1,3 +1,7 @@
+<h1>Waypoints#new</h1>
+<p>Find me in app/views/waypoints/new.html.erb</p>
+
+
 <h1>Trips#new</h1>
 <p>Find me in app/views/trips/new.html.erb</p>
 
@@ -138,12 +142,15 @@
   </script>
 </head>
 
+
+
+
 <body>
   hi
-  <%= form_for [@trip] do |f| %>
+  <%= form_for([@trip, @waypoint], url: trip_waypoints_path) do |f| %>
 
   Origin:
-  <%=f.text_field :origin_lat ,:id=>"origin_field" %>
+  <%=f.text_field :lat ,:id=>"origin_field" %>
   <script type="text/javascript">
     var my_origin= "Vancouver, BC"
     $(document).ready(function(){
@@ -151,14 +158,7 @@
     });
   </script>
 
-  Destination:
-  <%=f.text_field :dest_lat ,:id=>"dest_field" %>
-  <script type="text/javascript">
-    var my_dest= "Whistler, BC"
-    $(document).ready(function(){
-      $("#dest_field").val(my_dest);
-    });
-  </script>
+ 
 
 
 
@@ -166,27 +166,6 @@
 </script>
 
 <div><%= f.submit "Submit and Save" %></div>
-<% end %>
-
-
-
-<%= form_for([@trip]) do |f| %>
-
-Waypoint:
-<%=f.text_field :origin_lat ,:id=>"origin_field" %>
-<script type="text/javascript">
-  var my_origin= "Vancouver, BC"
-  $(document).ready(function(){
-    $("#origin_field").val(my_origin);
-  });
-</script>
-
-
-
-
-</script>
-
-<div><%= f.submit "Submit and Save waypoints" %></div>
 <% end %>
 
 

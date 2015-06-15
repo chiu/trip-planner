@@ -12,7 +12,8 @@ end
 
 def new
   @trip = Trip.new
-  @waypoint = Waypoint.new
+  # @waypoint = Waypoint.new
+  # @waypoint.trip_id = params[:id]
 end
 
 def edit
@@ -23,8 +24,8 @@ def create
   @trip = Trip.new(trip_params)
 
   if @trip.save
-    # redirect_to trips_path
-    render :new
+    redirect_to trips_path
+    # render :new
   else
     render :new
   end

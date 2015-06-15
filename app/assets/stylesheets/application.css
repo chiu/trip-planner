@@ -11,7 +11,7 @@
 
 #index-btns {
   float: right;
-  margin-right: 5px;
+  margin-right: 10px;
   margin-top: 10px;
 }
 
@@ -40,11 +40,13 @@ ul.dropdown-menu.pull-right input {
 /*styling for the form in the the center of the index page*/
 
 #index-start {
-  width: 250px;
+  width: 390px;
   height: 38px;
   margin-top: 0%;
   border-radius: 5px;
   font-size: 18px;
+  margin-bottom: 3%;
+  padding-left: 15px;
 }
 
 #index-end {
@@ -73,16 +75,19 @@ ul.dropdown-menu.pull-right input {
 
 #main-hdr {
   text-align: center;
-  color: #000;
-  font-size: 50px;
+  color: #61C7EB;
+  font-size: 80px;
   margin-top: 15%;
+  margin-bottom: 15%;
+  font-family: 'Lobster', cursive;
+  text-shadow: 5px 5px 5px #001349;
 }
 
 #plan-trip {
   text-align: center;
   color: #000;
   font-size: 30px;
-  margin-top: 1%;
+  margin-bottom: 5%;
 }
 
 /*styling for the attractions and checkboxes on the index page*/
@@ -110,16 +115,9 @@ ul.dropdown-menu.pull-right input {
 #checkbox-camping {
   width: 1em;
   height: 1em;
+  margin-right: 1.25%;
 }
 
-/*#icons {
-  border: 2px solid black;
-  background-color: #E6E6E6;
-  padding-top: 1%;
-  padding-bottom: 1%;
-  border-radius: 5px;
-  margin: 0 auto;
-}*/
 
 
 
