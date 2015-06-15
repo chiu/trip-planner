@@ -17,7 +17,7 @@
       margin: 0px;
       padding: 0px
     }
-    
+
     .controls {
       margin-top: 16px;
       border: 1px solid transparent;
@@ -28,7 +28,7 @@
       outline: none;
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
     }
-    
+
     #pac-input {
       background-color: #fff;
       font-family: Roboto;
@@ -39,21 +39,21 @@
       text-overflow: ellipsis;
       width: 400px;
     }
-    
+
     #pac-input:focus {
       border-color: #4d90fe;
     }
-    
+
     .pac-container {
       font-family: Roboto;
     }
-    
+
     #type-selector {
       color: #fff;
       background-color: #4d90fe;
       padding: 5px 11px 0px 11px;
     }
-    
+
     #type-selector label {
       font-family: Roboto;
       font-size: 13px;
@@ -74,114 +74,65 @@
     var australia = new google.maps.LatLng(-25.274398, 133.775136);
 
     function initialize() {
-
-        // var startlocation = jQuery("#startLocationInput").val();
-        // console.log("start:", startlocation);
-
-        var mapOptions = {
-          zoom: 7,
-          center: australia
-        };
-        map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-        directionsDisplay.setMap(map);
-        directionsDisplay.setPanel(document.getElementById('directionsPanel'));
-
-        google.maps.event.addListener(directionsDisplay, 'directions_changed', function() {
-          computeTotalDistance(directionsDisplay.getDirections());
-          showWaypoints(directionsDisplay.getDirections());
-
-        });
+      var mapOptions = {
+        zoom: 7,
+        center: australia
+      };
+      map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+      directionsDisplay.setMap(map);
+      directionsDisplay.setPanel(document.getElementById('directionsPanel'));
+      google.maps.event.addListener(directionsDisplay, 'directions_changed', function() {
+        computeTotalDistance(directionsDisplay.getDirections());
+        showWaypoints(directionsDisplay.getDirections());
+      });
+    }
 
 
+    function drawDirections() {
+      console.log("draw directions happened");
+      var startlocation = $("#origin_field").val();
+      console.log("start:", startlocation);
+      var endlocation = $("#dest_field").val();
+      console.log("end:", endlocation);
+      calcRoute(startlocation, endlocation);
+    }
 
+    function calcRoute(origin_argument, destination_argument) {
+      var request = {
+        origin: origin_argument,
+        destination: destination_argument,
+        waypoints: [{
+          location: 'Vancouver, BC'
+        }, {
+          location: 'Richmond, BC'
+        }],
+        travelMode: google.maps.TravelMode.DRIVING
+      };
+      directionsService.route(request, function(response, status) {
+        if (status == google.maps.DirectionsStatus.OK) {
+          directionsDisplay.setDirections(response);
+        }
+      });
+    }
 
-
-        // calcRoute();
+    function showWaypoints(result) {
+      var myroute = result.routes[0];
+      for (var i = 0; i < myroute.legs.length; i++) {
+        console.log(myroute.legs[i]);
       }
+    }
 
-
-      function drawDirections() {
-
-        console.log("draw directions happened");
-
-        var startlocation = $("label[for='startLocationInput']").val();
-        console.log("start:", startlocation);
-
-
-        var endlocation = $("#endLocationInput").val();
-        console.log("end:", endlocation);
-
-        // var mapOptions = {
-        //     zoom: 7,
-        //     center: australia
-        // };
-        // // map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-        // directionsDisplay.setMap(map);
-        // directionsDisplay.setPanel(document.getElementById('directionsPanel'));
-
-        // google.maps.event.addListener(directionsDisplay, 'directions_changed', function() {
-        //     computeTotalDistance(directionsDisplay.getDirections());
-        // });
-
-        // calcRoute('Sydney, NSW', );
-        // calcRoute('Sydney, NSW', 'Bourke, NSW');
-        calcRoute(startlocation, endlocation);
-
-
-
+    function computeTotalDistance(result) {
+      var total = 0;
+      var myroute = result.routes[0];
+      for (var i = 0; i < myroute.legs.length; i++) {
+        total += myroute.legs[i].distance.value;
       }
+      total = total / 1000.0;
+      document.getElementById('total').innerHTML = total + ' km';
+    }
 
-      function calcRoute(origin_argument, destination_argument) {
-
-        var request = {
-          origin: origin_argument,
-          destination: destination_argument,
-            // origin: 'Sydney, NSW',
-            // origin: 'Melbourne, ',
-            // destination: 'Melbourne, NSW',
-            waypoints: [{
-              location: 'Vancouver, BC'
-            }, {
-              location: 'Richmond, BC'
-            }],
-            travelMode: google.maps.TravelMode.DRIVING
-          };
-          directionsService.route(request, function(response, status) {
-            if (status == google.maps.DirectionsStatus.OK) {
-              directionsDisplay.setDirections(response);
-            }
-          });
-        }
-
-
-        function showWaypoints(result) {
-          var myroute = result.routes[0];
-          for (var i = 0; i < myroute.legs.length; i++) {
-            // total += myroute.legs[i].distance.value;
-            console.log(myroute.legs[i]);
-          }
-
-
-        }
-
-        function computeTotalDistance(result) {
-          var total = 0;
-          var myroute = result.routes[0];
-          for (var i = 0; i < myroute.legs.length; i++) {
-            total += myroute.legs[i].distance.value;
-          }
-          total = total / 1000.0;
-          document.getElementById('total').innerHTML = total + ' km';
-        }
-        // $(document).on("click", "awesomeButton",(drawDirections);
-
-    //    $(document).on("click","#awesomeButton",function() {
-    //     alert("click bound to document listening for #test-element");
-    // });
-    // retrieve routes.legs[0].start_address
-
-
-    $(document).on("click", "#awesomeButton", drawDirections);
+    $(document).on("click", "#calculateRouteButton", drawDirections);
 
     google.maps.event.addDomListener(window, 'load', initialize);
   </script>
@@ -189,36 +140,35 @@
 
 <body>
   hi
-  <%= form_for @trip do |f| %>
+  <%= form_for [@trip] do |f| %>
+
+  Origin:
   <%=f.text_field :origin_lat ,:id=>"origin_field" %>
+  <script type="text/javascript">
+    var my_origin= "Vancouver, BC"
+    $(document).ready(function(){
+      $("#origin_field").val(my_origin);
+    });
+  </script>
 
-<script type="text/javascript">
-   var my_origin= "default_origin"
-   $(document).ready(function(){
-        $("#origin_field").val(my_origin);
-   });
-</script>
-
-
+  Destination:
   <%=f.text_field :dest_lat ,:id=>"dest_field" %>
-
-<script type="text/javascript">
-   var my_dest= "default_dest"
-   $(document).ready(function(){
-        $("#dest_field").val(my_dest);
-   });
-</script>
-
+  <script type="text/javascript">
+    var my_dest= "Whistler, BC"
+    $(document).ready(function(){
+      $("#dest_field").val(my_dest);
+    });
+  </script>
 
 
-  
+  Waypoint:
 
- 
-   
-  <div><%= f.submit "Submit" %></div>
+  </script>
+
+  <div><%= f.submit "Submit and Save" %></div>
   <% end %>
 
-  <button id="awesomeButton"> print in console </button>
+  <button id="calculateRouteButton"> calculate route and print in console </button>
   <button id="showWaypointButton"> show me the waypoints </button>
   <div id="map-canvas" style="float:left;width:70%; height:100%"></div>
   <div id="directionsPanel" style="float:right;width:30%;height 100%">
