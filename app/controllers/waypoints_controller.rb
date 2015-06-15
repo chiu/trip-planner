@@ -1,17 +1,17 @@
 class WaypointsController < ApplicationController
 
+before_filter :load_trip
 
+  def index
+    @waypoints = Waypoint.all
+  end
 
-def index
-  @waypoints = Waypoint.all
-end
+  def show
+    @waypoint = Waypoint.find(params[:id])
+  end
 
-def show
-  @waypoint = Waypoint.find(params[:id])
-end
-
-def new
-  @waypoint = Waypoint.new
+  def new
+    @waypoint = Waypoint.new
   # @waypoint = Waypoint.new
 end
 
@@ -31,7 +31,7 @@ end
 # end
 
 def create
-    @waypoint = @trip.waypoints.build(waypoint_params)
+  @waypoint = @trip.waypoints.build(waypoint_params)
     # @waypoint.user_id = current_user.id
 
     if @waypoint.save
@@ -43,27 +43,34 @@ def create
 
 
 
-def update
-  @waypoint = Waypoint.find(params[:id])
+  def update
+    @waypoint = Waypoint.find(params[:id])
 
-  if @waypoint.update_attributes(waypoint_params)
-    redirect_to waypoint_path(@waypoint)
-  else
-    render :edit
+    if @waypoint.update_attributes(waypoint_params)
+      redirect_to waypoint_path(@waypoint)
+    else
+      render :edit
+    end
   end
-end
 
-def destroy
-  @waypoint = Waypoint.find(params[:id])
-  @waypoint.destroy
-  redirect_to waypoints_path
-end
+  def destroy
+    @waypoint = Waypoint.find(params[:id])
+    @waypoint.destroy
+    redirect_to waypoints_path
+  end
 
-protected
+  protected
 
-def waypoint_params
-  params.require(:waypoint).permit(
-        :lat, :lng, :trip_id, :created_at, :updated_at, 
-    )
-end
+  def load_trip
+    @trip = Trip.find(params[:trip_id])
+  end
+
+  def waypoint_params
+    params.require(:waypoint).permit(
+      :lat, :lng, :trip_id, :created_at, :updated_at, 
+      )
+  end
+
+
+
 end
