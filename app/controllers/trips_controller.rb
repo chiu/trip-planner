@@ -12,6 +12,7 @@ end
 
 def new
   @trip = Trip.new
+  @waypoint = Waypoint.new
 end
 
 def edit
