@@ -104,7 +104,7 @@
 
         console.log("draw directions happened");
 
-        var startlocation = $("#startLocationInput").val();
+        var startlocation = $("label[for='startLocationInput']").val();
         console.log("start:", startlocation);
 
 
@@ -190,19 +190,35 @@
 <body>
   hi
   <%= form_for @trip do |f| %>
-   <div>
-    <%= f.label "endLocationInput" %><br>
-    <%= f.text_field "dest_lat" %>
-  </div>
-  <div>
-    <%= f.label "startLocationInput" %><br>
-    <%= f.text_field "origin_lat" %>
-  </div>
+  <%=f.text_field :origin_lat ,:id=>"origin_field" %>
+
+<script type="text/javascript">
+   var my_origin= "default_origin"
+   $(document).ready(function(){
+        $("#origin_field").val(my_origin);
+   });
+</script>
+
+
+  <%=f.text_field :dest_lat ,:id=>"dest_field" %>
+
+<script type="text/javascript">
+   var my_dest= "default_dest"
+   $(document).ready(function(){
+        $("#dest_field").val(my_dest);
+   });
+</script>
+
+
+
+  
+
+ 
    
   <div><%= f.submit "Submit" %></div>
   <% end %>
 
-  <button id="awesomeButton">Click me </button>
+  <button id="awesomeButton"> print in console </button>
   <button id="showWaypointButton"> show me the waypoints </button>
   <div id="map-canvas" style="float:left;width:70%; height:100%"></div>
   <div id="directionsPanel" style="float:right;width:30%;height 100%">

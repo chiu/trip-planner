@@ -9,9 +9,9 @@ Rails.application.routes.draw do
  end 
 
 
- root to: 'trips#index'
+ # root to: 'front_page#front_page'
 
-  # get 'trips/index'
+  root to: 'trips#front_page'
 
 
   # get 'trips/show'

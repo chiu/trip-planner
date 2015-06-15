@@ -1,71 +1,16 @@
-<head>
-  <script>
-   $(function() {
-    $("#start-trip-btn").on('click', function() {
-      $('#div1').fadeOut(1500, function () {
-        $("<div id='div2'><input type='text' name='text' placeholder='Where are you coming from?' id='index-start'/></div>").appendTo('#div-container').delay(1000).fadeIn('fast');
-      });
-    });
-    $('.dropdown-menu input').on('click', function(e) {
-      console.log('click');
-      e.stopPropagation(); 
-    });
-  });
- </script>
- <title>Co-Pilot</title>
-</head>
-<body id="background">
-  <div id="index-btns">
-    <div class="btn-group">
-      <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-        Login <span class="caret"></span>
-      </button>
-      <ul class="dropdown-menu pull-right" role="menu">
-        <li><input type="text" name="username" placeholder="Username" id="login-username" /></li>
-        <li><input type="password" name="password" placeholder="Password" id="login-password" /></li>
-        <li class="divider"></li>
-        <li><button class="btn btn-info" id="login-btn">Login</button></li>
-      </ul>
-    </div>
-    <div class="btn-group">
-      <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-        Sign Up <span class="caret"></span>
-      </button>
-      <ul class="dropdown-menu pull-right" role="menu">
-        <li><input type="text" name="email" placeholder="Email" id="sign-up-email" /></li>
-        <li><input type="text" name="username" placeholder="Username" id="sign-up-username" /></li>
-        <li><input type="password" name="password" placeholder="Password" id="sign-up-password" /></li>
-        <li class="divider"></li>
-        <li><button class="btn btn-info" id="sign-up-btn">Sign Up</button></li>
-      </ul>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-offset-4 col-md-4" id="trip">
-      <h1 id="main-hdr">Co-Pilot</h1>
-      <!-- <h2 id="plan-trip">Start planning your next trip...</h2> -->
-      <div id="div-container">
-        <div id="div1">
-          <input type="text" name="text" placeholder="Where do you want to go?" id="index-start" /> 
-        </div>
-      </div>
-      <button class="btn btn-info" type="submit" name="submit" id="start-trip-btn">Start Trip</button>
-      <div>
-        <form id="icons">
-          <img id="hotel" src="/images/hotel.png" alt="hotel">
-          <input type="checkbox" id="checkbox-hotel">
-          <img id="food" src="/images/food.png" alt="food">
-          <input type="checkbox" id="checkbox-food">
-          <img id="entertainment" src="/images/entertainment.png" alt="entertainment">
-          <input type="checkbox" id="checkbox-entertainment">
-          <img id="historical" src="/images/historical.png" alt="historical">
-          <input type="checkbox" id="checkbox-historical">
-          <img id="outdoors" src="/images/outdoors.png" alt="outdoors">
-          <input type="checkbox" id="checkbox-outdoors">
-          <img id="camping" src="/images/camping.png" alt="camping">
-          <input type="checkbox" id="checkbox-camping">
-        </form>
-      </div>
-    </div>
-  </div>
-</body>
+<h1>Trips#index</h1>
+<p>Find me in app/views/trips/index.html.erb</p>
+
+
+
+<h1>Copilot</h1>
+<%= link_to "Submit a trip!", new_trip_path %>
+<hr>
+<% @trips.each do |trip| %>
+<%= link_to image_tag(trip.trip_image_url), trip_path(trip) %>
+<h2><%= link_to trip.title, trip_path(trip) %></h2>
+<h3><%= trip.start_time %></h3>
+<p><%= trip.description %></p>
+<hr>
+<% end %>
+
