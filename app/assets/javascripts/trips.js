@@ -58,7 +58,7 @@ $(document).ready(function() {
             console.log("start:", startlocation);
             var endlocation = $("#dest_field").val();
             console.log("end:", endlocation);
-            calcRoute(startlocation, endlocation);
+            this.calcRoute(startlocation, endlocation);
         },
 
         calcRoute: function(origin_argument, destination_argument) {
