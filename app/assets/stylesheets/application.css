@@ -15,6 +15,10 @@
   margin-top: 10px;
 }
 
+#index-btns a {
+  color: #FFF;
+}
+
 ul.dropdown-menu.pull-right {
   background-color: #E6E6E6;
   padding-left: 10%;
