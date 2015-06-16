@@ -1,19 +1,10 @@
 Rails.application.routes.draw do
 
-
-
-  devise_for :users
-
-
   resources :trips do
    resources :waypoints, only: [:new, :create]
- end 
-
-
- # root to: 'front_page#front_page'
+  end 
 
   root to: 'trips#front_page'
-
 
   # get 'trips/show'
 
