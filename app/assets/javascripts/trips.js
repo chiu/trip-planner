@@ -11,17 +11,12 @@ $(document).ready(function() {
 
 
 
-  console.log("js is loaded in");
+    console.log("js is loaded in");
 
-   surveyor = {
 
-        rendererOptions: {
-            draggable: true
-        },
-        directionsDisplay: new google.maps.DirectionsRenderer(this.rendererOptions),
-        directionsService: new google.maps.DirectionsService(),
-        map: undefined,
-        australia: new google.maps.LatLng(-25.274398, 133.775136),
+    surveyor = {
+
+
 
 
 
@@ -30,16 +25,29 @@ $(document).ready(function() {
         },
 
         initialize: function() {
+            var rendererOptions = {
+                draggable: true
+            };
+            var directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);;
+            var directionsService = new google.maps.DirectionsService();
+            var map;
+            var australia = new google.maps.LatLng(-25.274398, 133.775136);
+
+
+
+
+
+
             var mapOptions = {
                 zoom: 7,
-                center: this.australia
+                center: australia
             };
-            this.map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-            this.directionsDisplay.setMap(this.map);
-            this.directionsDisplay.setPanel(document.getElementById('directionsPanel'));
-            google.maps.event.addListener(this.directionsDisplay, 'directions_changed', function() {
-                computeTotalDistance(this.directionsDisplay.getDirections());
-                showWaypoints(this.directionsDisplay.getDirections());
+            map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+            directionsDisplay.setMap(map);
+            directionsDisplay.setPanel(document.getElementById('directionsPanel'));
+            google.maps.event.addListener(directionsDisplay, 'directions_changed', function() {
+                computeTotalDistance(directionsDisplay.getDirections());
+                showWaypoints(directionsDisplay.getDirections());
             });
         },
 
