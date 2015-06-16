@@ -1,45 +1,4 @@
-<head>
-  <script>
-   $(function() {
-    $("#start-trip-btn").on('click', function() {
-      $('#div1').fadeOut(1500, function () {
-        $("<div id='div2'><input type='text' name='text' placeholder='Where are you coming from?' id='index-start'/></div>").appendTo('#div-container').delay(1000).fadeIn('fast');
-      });
-    });
-    $('.dropdown-menu input').on('click', function(e) {
-      console.log('click');
-      e.stopPropagation(); 
-    });
-  });
- </script>
- <title>Co-Pilot</title>
-</head>
 <body id="background">
-  <div id="index-btns">
-    <div class="btn-group">
-      <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-        Login <span class="caret"></span>
-      </button>
-      <ul class="dropdown-menu pull-right" role="menu">
-        <li><input type="text" name="username" placeholder="Username" id="login-username" /></li>
-        <li><input type="password" name="password" placeholder="Password" id="login-password" /></li>
-        <li class="divider"></li>
-        <li><button class="btn btn-info" id="login-btn">Login</button></li>
-      </ul>
-    </div>
-    <div class="btn-group">
-      <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-        Sign Up <span class="caret"></span>
-      </button>
-      <ul class="dropdown-menu pull-right" role="menu">
-        <li><input type="text" name="email" placeholder="Email" id="sign-up-email" /></li>
-        <li><input type="text" name="username" placeholder="Username" id="sign-up-username" /></li>
-        <li><input type="password" name="password" placeholder="Password" id="sign-up-password" /></li>
-        <li class="divider"></li>
-        <li><button class="btn btn-info" id="sign-up-btn">Sign Up</button></li>
-      </ul>
-    </div>
-  </div>
   <div class="row">
     <div class="col-md-offset-4 col-md-4" id="trip">
       <h1 id="main-hdr">Co-Pilot</h1>

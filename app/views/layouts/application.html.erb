@@ -10,9 +10,35 @@
   <!-- Latest compiled and minified JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
   <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div id="index-btns">
+    <div class="btn-group">
+      <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+        Login <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu pull-right" role="menu">
+        <li><input type="text" name="username" placeholder="Username" id="login-username" /></li>
+        <li><input type="password" name="password" placeholder="Password" id="login-password" /></li>
+        <li class="divider"></li>
+        <li><button class="btn btn-info" id="login-btn">Login</button></li>
+      </ul>
+    </div>
+    <div class="btn-group">
+      <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+        Sign Up <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu pull-right" role="menu">
+        <li><input type="text" name="email" placeholder="Email" id="sign-up-email" /></li>
+        <li><input type="text" name="username" placeholder="Username" id="sign-up-username" /></li>
+        <li><input type="password" name="password" placeholder="Password" id="sign-up-password" /></li>
+        <li class="divider"></li>
+        <li><button class="btn btn-info" id="sign-up-btn">Sign Up</button></li>
+      </ul>
+    </div>
+  </div>
 
   <%= yield %>
   
