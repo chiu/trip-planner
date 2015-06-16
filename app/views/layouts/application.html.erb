@@ -30,12 +30,15 @@
       <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
         Sign Up <span class="caret"></span>
       </button>
+      
       <ul class="dropdown-menu pull-right" role="menu">
-        <li><input type="text" name="email" placeholder="Email" id="sign-up-email" /></li>
-        <li><input type="text" name="username" placeholder="Username" id="sign-up-username" /></li>
-        <li><input type="password" name="password" placeholder="Password" id="sign-up-password" /></li>
-        <li class="divider"></li>
-        <li><button class="btn btn-info" id="sign-up-btn">Sign Up</button></li>
+      <%= form_for :user, url: users_path do |f| %>
+        <li><%= f.email_field :email, autofocus: true, id: 'sign-up-email', placeholder: 'Email' %></li>
+          <li><%= f.text_field :username, id: 'sign-up-username', placeholder: 'Username' %></li>
+          <li><%= f.password_field :password, id: 'sign-up-password', placeholder: 'Password' %></li>
+          <li class="divider"></li>
+        <li><%= f.submit "Sign up", id: 'sign-up-btn', class: 'btn btn-info' %></li>
+        <% end %>
       </ul>
     </div>
   </div>
