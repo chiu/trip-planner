@@ -5,8 +5,8 @@
 
 
 // carto is short for cartographer
-var surveyor;
-var cloud = 4;
+// var surveyor;
+// var cloud = 4;
 $(document).ready(function() {
 
 
@@ -14,24 +14,24 @@ $(document).ready(function() {
     console.log("js is loaded in");
 
 
-    surveyor = {
+    // surveyor = {
+
+
+    var rendererOptions = {
+        draggable: true
+    };
+    var directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);;
+    var directionsService = new google.maps.DirectionsService();
+    var map;
+    var australia = new google.maps.LatLng(-25.274398, 133.775136);
 
 
 
-
-
-        yolo: function() {
+    yolo: function() {
             console.log("hello there!!!!");
         },
 
         initialize: function() {
-            var rendererOptions = {
-                draggable: true
-            };
-            var directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);;
-            var directionsService = new google.maps.DirectionsService();
-            var map;
-            var australia = new google.maps.LatLng(-25.274398, 133.775136);
 
 
 
@@ -96,9 +96,9 @@ $(document).ready(function() {
             document.getElementById('total').innerHTML = total + ' km';
         },
 
-    };
+        // };
 
-    $(document).on("click", "#calculateRouteButton", surveyor.drawDirections);
+        $(document).on("click", "#calculateRouteButton", surveyor.drawDirections);
 
     google.maps.event.addDomListener(window, 'load', surveyor.initialize);
 
