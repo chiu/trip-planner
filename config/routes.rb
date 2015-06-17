@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create, :show]
 
   resources :trips do
-   resources :waypoints, only: [:new, :create]
+    collection { post 'setup' }
+    resources :waypoints, only: [:new, :create]
   end 
 
   resource :session, only: [:new, :create, :destroy]

@@ -6,6 +6,17 @@ def index
   @trips = Trip.all
 end
 
+def front_page
+  @trip = Trip.new
+end
+
+def setup
+  @trip = Trip.new trip_params
+  # same as create but not saving it
+  render :new
+end
+
+
 def show
   @trip = Trip.find(params[:id])
 end
@@ -21,7 +32,7 @@ def edit
 end
 
 def create
-  @trip = Trip.new(trip_params)
+  @trip = Trip.new(trip_params.slice([:start_from, :go_to]))
 
   if @trip.save
     redirect_to trips_path
@@ -52,7 +63,7 @@ protected
 def trip_params
   params.require(:trip).permit(
 
-    :title, :start_time, :end_time, :description, :trip_image_url, :origin_lat, :origin_lng, :dest_lat, :dest_lng, :hotel, :food, :entertainment, :monument, :nature, :camping, :radius, :public, :created_at, :updated_at
+    :title, :start_time, :end_time, :description, :trip_image_url, :origin_lat, :origin_lng, :dest_lat, :dest_lng, :hotel, :food, :entertainment, :monument, :nature, :camping, :radius, :public, :start_from, :go_to
     )
 end
 end

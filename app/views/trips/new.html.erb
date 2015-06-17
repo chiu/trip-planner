@@ -59,10 +59,10 @@
   Hello, welcome!
   <button id="calculateRouteButton"> calculate route </button>
 
-  <%= form_for [@trip] do |f| %>
+  <%= form_for @trip do |f| %>
 
   Origin:
-  <%=f.text_field :origin_lat ,:id=>"origin_field" %>
+  <%=f.text_field :start_from ,:id=>"origin_field" %>
   <script type="text/javascript">
     var my_origin= "Vancouver, BC"
     $(document).ready(function(){
