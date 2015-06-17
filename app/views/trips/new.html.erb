@@ -62,11 +62,13 @@
   </style>
 
   
- 
+
 </head>
 
 <body>
-  hi
+  Hello, welcome!
+  <button id="calculateRouteButton"> calculate route </button>
+
   <%= form_for [@trip] do |f| %>
 
   Origin:
@@ -87,44 +89,10 @@
     });
   </script>
 
-<script>
-console.log(surveyor);
-// surveyor.showWaypoints();
-</script>
-
-
-</script>
-
 <div><%= f.submit "Submit and Save" %></div>
 <% end %>
 
-
-
-<%= form_for([@trip]) do |f| %>
-
-Waypoint:
-<%=f.text_field :origin_lat ,:id=>"origin_field" %>
-<script type="text/javascript">
-  var my_origin= "Vancouver, BC"
-  $(document).ready(function(){
-    $("#origin_field").val(my_origin);
-  });
-</script>
-
-
-
-
-</script>
-
-<div><%= f.submit "Submit and Save waypoints" %></div>
-<% end %>
-
-
-
-
-
-<button id="calculateRouteButton"> calculate route and print in console </button>
-<button id="showWaypointButton"> show me the waypoints </button>
+<!-- <button id="showWaypointButton"> show me the waypoints </button> -->
 <div id="map-canvas" style="float:left;width:70%; height:100%"></div>
 <div id="directionsPanel" style="float:right;width:30%;height 100%">
   <p>Total Distance: <span id="total"></span></p>
