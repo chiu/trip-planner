@@ -1,4 +1,3 @@
-
 /* jshint jquery:true, quotmark:false, devel:true */
 /* globals google:true */
 // surveryor.js
