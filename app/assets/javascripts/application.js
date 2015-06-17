@@ -20,8 +20,4 @@
 //= require_tree .
 
 
-<<<<<<< HEAD
-=======
 
-
->>>>>>> experimenting
