@@ -31,8 +31,12 @@ var surveyor = (function() {
 
         var mapOptions = {
             zoom: 7,
-            center: australia
+            center: australia,
+            offsetWidth: 60
         };
+       
+        $('#map-canvas').offsetWidth = 60;
+       debugger;
         map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
         directionsDisplay.setMap(map);
         directionsDisplay.setPanel(document.getElementById('directionsPanel'));
@@ -92,11 +96,14 @@ var surveyor = (function() {
         drawDirections: drawDirections,
         initialize: initialize
     };
-}());
+// }());
+
+})();
 
 $(document).on("click", "#calculateRouteButton", surveyor.drawDirections);
 
-$(function() {
+(function() {
+  debugger
     "use strict";
     google.maps.event.addDomListener(window, 'load', surveyor.initialize);
-});
+})();

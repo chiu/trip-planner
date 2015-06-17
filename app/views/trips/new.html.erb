@@ -1,4 +1,5 @@
 <h1>Trips#new</h1>
+<h2>THIS PAGE ONLY WORKS AFTER RELOAD OF PAGE; error: the map doesn't loads if user is logged,  the map loads ok if user is logged out.</h2>
 <p>Find me in app/views/trips/new.html.erb</p>
 
 
@@ -16,6 +17,7 @@
       height: 100%;
       margin: 0px;
       padding: 0px
+      
     }
 
     .controls {
@@ -61,7 +63,7 @@
     }
   </style>
 
-  
+
 
 </head>
 
@@ -89,14 +91,14 @@
     });
   </script>
 
-<div><%= f.submit "Submit and Save" %></div>
-<% end %>
+  <div><%= f.submit "Submit and Save" %></div>
+  <% end %>
 
-<!-- <button id="showWaypointButton"> show me the waypoints </button> -->
-<div id="map-canvas" style="float:left;width:70%; height:100%"></div>
-<div id="directionsPanel" style="float:right;width:30%;height 100%">
-  <p>Total Distance: <span id="total"></span></p>
-</div>
+  <!-- <button id="showWaypointButton"> show me the waypoints </button> -->
+  <div id="map-canvas" style="float:left;width:70%; height:100%; offsetWidth:60%"></div>
+  <div id="directionsPanel" style="float:right;width:30%;height 100%">
+    <p>Total Distance: <span id="total"></span></p>
+  </div>
 </body>
 
 </html>
