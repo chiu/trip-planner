@@ -17,6 +17,9 @@
 
 var surveyor = (function() {
     "use strict";
+
+
+
     var rendererOptions = {
         draggable: true
     };
@@ -26,26 +29,25 @@ var surveyor = (function() {
 
     var australia = new google.maps.LatLng(-25.274398, 133.775136);
 
-    function initialize() {
+    function initialize()
+    {
+      var map_canvas = document.getElementById('map-canvas');
+      if(!map_canvas) { return; }
 
+      var mapOptions = {
+          zoom: 7,
+          center: australia,
+          // offsetWidth: 60
+      };
 
-        var mapOptions = {
-            zoom: 7,
-            center: australia,
-            offsetWidth: 60
-        };
-       
-        $('#map-canvas').offsetWidth = 60;
-       debugger;
-        map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-        directionsDisplay.setMap(map);
-        directionsDisplay.setPanel(document.getElementById('directionsPanel'));
-        google.maps.event.addListener(directionsDisplay, 'directions_changed', function() {
-            computeTotalDistance(directionsDisplay.getDirections());
-            showWaypoints(directionsDisplay.getDirections());
-        });
+      map = new google.maps.Map(map_canvas, mapOptions);
+      directionsDisplay.setMap(map);
+      directionsDisplay.setPanel(document.getElementById('directionsPanel'));
+      google.maps.event.addListener(directionsDisplay, 'directions_changed', function() {
+          computeTotalDistance(directionsDisplay.getDirections());
+          showWaypoints(directionsDisplay.getDirections());
+      });
     }
-
 
     function drawDirections() {
         console.log("draw directions happened");
@@ -102,8 +104,5 @@ var surveyor = (function() {
 
 $(document).on("click", "#calculateRouteButton", surveyor.drawDirections);
 
-(function() {
-  debugger
-    "use strict";
-    google.maps.event.addDomListener(window, 'load', surveyor.initialize);
-})();
+
+google.maps.event.addDomListener(window, 'load', surveyor.initialize);
