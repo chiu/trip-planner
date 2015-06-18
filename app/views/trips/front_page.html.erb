@@ -2,29 +2,36 @@
   <div class="row">
     <div class="col-md-offset-4 col-md-4" id="trip">
       <h1 id="main-hdr">Co-Pilot</h1>
-      <div id="div-container">
-        <%= form_for @trip, url: setup_trips_path do |f| %>
+      <%= form_for @trip, url: setup_trips_path do |f| %>
+        
+        <div id="div-container">
           <%= f.text_field :start_from, placeholder: 'Where are you coming from?', id: 'index-start' %>
           <%= f.text_field :go_to, placeholder: 'Where do you want to go?', id: 'index-end' %>
-      </div>
-      <div>
-        <form id="icons" >
+        </div>
+        <div id="icons" >
+
           <img id="hotel" src="/images/hotel.png" alt="hotel">
-          <input type="checkbox" id="checkbox-hotel" value="hotels">
+          <%= f.check_box :hotel, id: 'checkbox-hotel' %>
+
           <img id="food" src="/images/food.png" alt="food">
-          <input type="checkbox" id="checkbox-food" name="food" value="food">
+          <%= f.check_box :food, id: 'checkbox-food' %>
+
           <img id="entertainment" src="/images/entertainment.png" alt="entertainment">
-          <input type="checkbox" id="checkbox-entertainment" value="entertainment">
+          <%= f.check_box :entertainment, id: 'checkbox-entertainment' %>
+
           <img id="historical" src="/images/historical.png" alt="historical">
-          <input type="checkbox" id="checkbox-historical" value="monument">
+          <%= f.check_box :monument, id: 'checkbox-monument' %>
+
           <img id="outdoors" src="/images/outdoors.png" alt="outdoors">
-          <input type="checkbox" id="checkbox-outdoors" value="nature">
+          <%= f.check_box :nature, id: 'checkbox-outdoors' %>
+
           <img id="camping" src="/images/camping.png" alt="camping">
-          <input type="checkbox" id="checkbox-camping" value="camping">
+          <%= f.check_box :camping, id: 'checkbox-camping' %>
+
           <button class="btn btn-info" type="submit" name="submit" id="start-trip-btn">Start Trip</button>
-        <% end %>
-      </div>
-      
+        </div>
+     
+      <% end %>
     </div>
   </div>
 </body>
