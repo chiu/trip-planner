@@ -1,5 +1,19 @@
-<h1>Trips#show</h1>
-<p>Find me in app/views/trips/show.html.erb</p>
+<!-- <h1>Trips#show</h1>
+<p>Find me in app/views/trips/show.html.erb</p> -->
 
+<div id="map-canvas"></div>
+<div id='panel'>
+  <div id='search-bar'>
+    <input type="text" name="query" id="query"><button type="button" id="search-button">Search</button>
+  </div>
+  <div id="direction-input">
+    <input type="text" name="origin_field" id="origin_field" placeholder="start location"><br>
+    <input type="text" name="dest_field" id="dest_field" placeholder="end location"><br>
+    <button type="button" id="dir-button">Show Direction</button>
+  </div>
+</div>
+<!-- <div id='attractions'></div> -->
 
-<p><%= link_to "Add a waypoint!", new_trip_waypoint_path(@trip) %></p>
+<script type="text/javascript">
+  google.maps.event.addDomListener(window, 'load', initialize);
+</script>

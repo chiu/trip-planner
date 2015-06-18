@@ -18,7 +18,8 @@ end
 
 
 def show
-  @trip = Trip.find(params[:id])
+  # @trip = Trip.find(params[:id])
+  render :show
 end
 
 def new
