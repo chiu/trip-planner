@@ -210,7 +210,8 @@ function calcRoute() {
         // console.log(result.routes[0]);
         //console.log(step1);
         directionsDisplay.setDirections(result);
-        
+        directionsDisplay.setMap(map);
+        directionsDisplay.setPanel(document.getElementById('directionsPanel'));
         google.maps.event.addListener(directionsDisplay, 'directions_changed', function() {
           // computeTotalDistance(directionsDisplay.getDirections());
           // showWaypoints(directionsDisplay.getDirections());
@@ -316,6 +317,15 @@ function performSearch() {
   }
 }
 
+
+// function drawDirections() {
+//   console.log("draw directions happened");
+//   var startlocation = $("#origin_field").val();
+//   console.log("start:", startlocation);
+//   var endlocation = $("#dest_field").val();
+//   console.log("end:", endlocation);
+//   calcRoute(startlocation, endlocation);
+// }
 
 $(function(){
   $(document).on("change", "#origin_field", calcRoute);
