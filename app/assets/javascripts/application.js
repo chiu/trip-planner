@@ -12,8 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require google_maps
-//= require_tree .
-
+//= require front_page
+//= require surveyor
 
 
