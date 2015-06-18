@@ -64,16 +64,16 @@
   Origin:
   <%=f.text_field :start_from ,:id=>"origin_field" %>
   <script type="text/javascript">
-    var my_origin= "Vancouver, BC"
+    // var my_origin= "Vancouver, BC"
     $(document).ready(function(){
       $("#origin_field").val(my_origin);
     });
-  </script>
+   </script>
 
   Destination:
-  <%=f.text_field :dest_lat ,:id=>"dest_field" %>
+  <%=f.text_field :go_to ,:id=>"dest_field" %>
   <script type="text/javascript">
-    var my_dest= "Whistler, BC"
+    // var my_dest= "Whistler, BC"
     $(document).ready(function(){
       $("#dest_field").val(my_dest);
     });

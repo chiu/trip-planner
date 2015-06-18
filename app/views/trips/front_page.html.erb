@@ -5,8 +5,7 @@
       <div id="div-container">
         <%= form_for @trip, url: setup_trips_path do |f| %>
           <%= f.text_field :start_from, placeholder: 'Where are you coming from?', id: 'index-start' %>
-        <!--<input type='text' name='text' placeholder='Where are you coming from?' id='index-start'/> -->
-        <input type='text' name='text' placeholder='Where do you want to go?' id='index-end'/>
+          <%= f.text_field :go_to, placeholder: 'Where do you want to go?', id: 'index-end' %>
       </div>
       <div>
         <form id="icons" >

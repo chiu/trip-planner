@@ -47,6 +47,7 @@ var surveyor = (function() {
           computeTotalDistance(directionsDisplay.getDirections());
           showWaypoints(directionsDisplay.getDirections());
       });
+      drawDirections();
     }
 
     function drawDirections() {
@@ -62,11 +63,11 @@ var surveyor = (function() {
         var request = {
             origin: origin_argument,
             destination: destination_argument,
-            waypoints: [{
-                location: 'Vancouver, BC'
-            }, {
-                location: 'Richmond, BC'
-            }],
+            // waypoints: [{
+            //     location: 'Vancouver, BC'
+            // }, {
+            //     location: 'Richmond, BC'
+            // }],
             travelMode: google.maps.TravelMode.DRIVING
         };
         directionsService.route(request, function(response, status) {
@@ -103,6 +104,7 @@ var surveyor = (function() {
 })();
 
 $(document).on("click", "#calculateRouteButton", surveyor.drawDirections);
-
+$(document).on("change", "#origin_field", surveyor.drawDirections);
+$(document).on("change", "#dest_field", surveyor.drawDirections);
 
 google.maps.event.addDomListener(window, 'load', surveyor.initialize);
