@@ -79,7 +79,8 @@
     // });
   </script>
 
-  <div><%= f.submit "Submit and Save" %></div>
+ <p><%= f.text_field :title, id: 'trip-title', placeholder: 'Trip Title' %></p> 
+  <div><%=f.submit "Save Trip" %></div>
   <% end %>
 
   <!-- <button id="showWaypointButton"> show me the waypoints </button> -->
