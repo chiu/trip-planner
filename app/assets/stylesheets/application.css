@@ -1,9 +1,11 @@
 /*styling for the btns at the top of the index page*/
 
 #index-btns {
-  float: right;
+  right: 0;
   margin-right: 10px;
   margin-top: 10px;
+  z-index: 444;
+  position: absolute;
 }
 
 #index-btns a {
@@ -117,12 +119,11 @@ ul.dropdown-menu.pull-right input {
   margin-right: 1.25%;
 }
 
-
-
 html, body, #map-canvas {
   height: 100%;
   margin: 0px;
   padding: 0px;
+  width: 100%;
 }
 #panel {
   position: absolute; 
@@ -130,10 +131,12 @@ html, body, #map-canvas {
   bottom: 0; 
   left: 1%; 
   height: 85%; 
-  width: 30%; 
+  width: 390px; 
   background-color: white; 
   opacity: 0.9; 
   overflow: auto;
+  border-radius: 5px;
+  box-shadow: inset 0px 0px 20px 0px #ABABAB; 
 }
 #search-bar {
   margin-top: 10%; 
@@ -141,7 +144,26 @@ html, body, #map-canvas {
 }
 #query {
     width: 65%;
+    height: 35px;
+    border-radius: 5px;
+    margin-right: 15px;
 }
+
+#origin_field,
+#dest_field {
+  border-radius: 5px;
+  width: 320px;
+  height: 35px;
+  margin-left: 8%;
+  margin-top: 5%;
+}
+
+#dir-button {
+  width: 200px;
+  margin-top: 5%;
+  margin-left: 23%;
+}
+
 #attractions {
   position: absolute;
   top: 25%;
