@@ -1,19 +1,23 @@
 <!-- <h1>Trips#show</h1>
-<p>Find me in app/views/trips/show.html.erb</p> -->
+  <p>Find me in app/views/trips/show.html.erb</p> -->
 
 <div id="map-canvas"></div>
+
 <div id='panel'>
+<h1 id="panel-hdr">Co-Pilot</h1>
   <div id='search-bar'>
     <input type="text" name="query" id="query"><button type="button" class="btn btn-info" id="search-button">Search</button>
   </div>
-  
-    <input type="text" name="origin_field" id="origin_field" placeholder="Start Location"><br>
-    <input type="text" name="dest_field" id="dest_field" placeholder="End Location"><br>
-    <button type="button" class="btn btn-info" id="dir-button">Show Direction</button>
-  
+  <input type="text" name="origin_field" id="origin_field" placeholder="Start Location"><br>
+  <input type="text" name="dest_field" id="dest_field" placeholder="End Location"><br>
+  <button type="button" class="btn btn-info" id="dir-button">Show Direction</button>
 </div>
 <!-- <div id='attractions'></div> -->
+
+
+
 
 <script type="text/javascript">
   google.maps.event.addDomListener(window, 'load', initialize);
 </script>
+
