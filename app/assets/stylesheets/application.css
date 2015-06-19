@@ -127,16 +127,17 @@ html, body, #map-canvas {
 }
 #panel {
   position: absolute; 
-  top: 2%; 
+  top: 8%; 
   bottom: 0; 
   left: 1%; 
-  height: 60%; 
+  height: 75%; 
   width: 390px; 
   background-color: white; 
   opacity: 0.9; 
   overflow: auto;
   border-radius: 5px;
-  box-shadow: inset 0px 0px 20px 0px #ABABAB; 
+  box-shadow: inset 0px 0px 20px 0px #ABABAB;
+  background-image: -webkit-linear-gradient(bottom, #2955AD 100%, #2511BD 100%);
 }
 
 #panel-hdr {
@@ -155,25 +156,32 @@ html, body, #map-canvas {
 }
 
 #query {
-    width: 65%;
-    height: 35px;
-    border-radius: 5px;
-    margin-right: 15px;
+  width: 320px;
+  height: 35px;
+  border-radius: 5px;
+  margin-right: 15px;
+}
+
+#search-button {
+  width: 320px;
+  margin-top: 2%;
+  margin-bottom: 2%;
 }
 
 #origin_field,
-#dest_field {
+#dest_field,
+#trip-title {
   border-radius: 5px;
   width: 320px;
   height: 35px;
   margin-left: 8%;
-  margin-top: 5%;
+  margin-bottom: 2%;
 }
 
 #dir-button {
-  width: 200px;
-  margin-top: 5%;
-  margin-left: 23%;
+  width: 320px;
+  margin-bottom: 2%;
+  margin-left: 8%;
 }
 
 #attractions {
