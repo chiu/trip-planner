@@ -6,11 +6,11 @@
   <div id='search-bar'>
     <input type="text" name="query" id="query"><button type="button" class="btn btn-info" id="search-button">Search</button>
   </div>
-  
-    <input type="text" name="origin_field" id="origin_field" placeholder="Start Location"><br>
-    <input type="text" name="dest_field" id="dest_field" placeholder="End Location"><br>
-    <button type="button" class="btn btn-info" id="dir-button">Show Direction</button>
-  
+    <%= form_for @trip do |f| %>
+      <%=f.text_field :start_from ,:id=>"origin_field" %>
+      <%=f.text_field :go_to ,:id=>"dest_field" %>
+      <button type="button" class="btn btn-info" id="dir-button">Show Direction</button>
+    <% end %>
 </div>
 <!-- <div id='attractions'></div> -->
 

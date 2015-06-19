@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-offset-4 col-md-4" id="trip">
       <h1 id="main-hdr">Co-Pilot</h1>
-      <%= form_for @trip, url: setup_trips_path do |f| %>
+      <%= form_for @trip, url: trips_path do |f| %>
         
         <div id="div-container">
           <%= f.text_field :start_from, placeholder: 'Where are you coming from?', id: 'index-start' , class: 'autocomplete'%>

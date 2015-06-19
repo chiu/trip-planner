@@ -3,7 +3,6 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create, :show]
 
   resources :trips do
-    collection { post 'setup' }
     resources :waypoints, only: [:new, :create]
   end 
 

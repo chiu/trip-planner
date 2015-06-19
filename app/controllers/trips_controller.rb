@@ -10,16 +10,16 @@ def front_page
   @trip = Trip.new
 end
 
-def setup
-  @trip = Trip.new trip_params
-  # same as create but not saving it
-  render :new
-end
+# def setup
+#   @trip = Trip.new(trip_params)
+#   # same as create but not saving it
+#   render :new
+# end
 
 
 def show
-  # @trip = Trip.find(params[:id])
-  render :show
+  @trip = Trip.find(params[:id])
+  # render :show
 end
 
 def new
@@ -33,14 +33,16 @@ def edit
 end
 
 def create
-  @trip = Trip.new(trip_params.slice([:start_from, :go_to]))
-
+  @trip = Trip.new(trip_params)
   if @trip.save
-    redirect_to trips_path
-    # render :new
+    redirect_to(@trip)
   else
     render :new
   end
+end
+
+def save
+  @trip.user_id = current_user.id
 end
 
 def update
