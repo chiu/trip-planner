@@ -3,10 +3,8 @@
 <head>
   <title>TripPlanner</title>
 
-  
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-
 
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
@@ -70,8 +68,9 @@
      </button>
      <ul class="dropdown-menu pull-right" role="menu">
 
-        <% Trip.all.each do |trip| %>
-        <li id="saved-trips-dropdown"><%= trip.title %></li>
+        <% current_user.trips.each do |trip| %>
+        
+        <li id="saved-trips-dropdown"><%= trip.start_from %></li>
         <% end %>
 
      </ul>
