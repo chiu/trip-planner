@@ -49,7 +49,7 @@ ul.dropdown-menu.pull-right input {
   margin-top: 2%;
 }
 
-/*styling for the form in the the center of the index page
+/*styling for the form in the the center of the index page*/
 
 #index-start,
 #index-end {
@@ -102,7 +102,6 @@ ul.dropdown-menu.pull-right input {
 #hotel {
   height: 40px;
   width: 40px;
-
 }
 
 #food,
@@ -131,6 +130,7 @@ html, body, #map-canvas {
   padding: 0px;
   width: 100%;
 }
+
 #panel {
   position: absolute; 
   top: 8%; 
@@ -204,6 +204,7 @@ html, body, #map-canvas {
   background-color: white; 
   opacity: 0.9;
 }
+
 #direction-input {
   margin-top: 10%; 
   margin-left: 10%
