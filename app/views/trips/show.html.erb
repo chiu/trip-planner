@@ -15,9 +15,16 @@
     <%=f.text_field :title, id:'trip-title', placeholder: 'Trip Title' %>
     <!-- <button type="button" class="btn btn-info" id="dir-button">Save Trip Now</button> -->
     <!-- <div><%=f.submit "Save Trip" %></div> -->
-    <button type="button" class="btn btn-info" id="dir-button"><%=f.submit "Save Trip" %></button> -->
+    <button type="button" class="btn btn-info" id="dir-button"><%=f.submit "Save Current Trip" %></button> 
     <% end %>
+
+ 
+<button type="button" class="btn btn-info" id="dir-button">
+    <%= link_to('Click here for new trips yay', controller: 'trips',
+        action: 'new', message: 'Welcome!') %>
+</button>
   </div>
+
 <!-- <div id='attractions'></div> -->
 
 
