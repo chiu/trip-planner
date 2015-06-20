@@ -212,10 +212,10 @@ function calcRoute() {
         //console.log(step1);
         directionsDisplay.setDirections(result);
         directionsDisplay.setMap(map);
-        directionsDisplay.setPanel(document.getElementById('directionsPanel'));
+        directionsDisplay.setPanel(document.getElementById('directions'));
         google.maps.event.addListener(directionsDisplay, 'directions_changed', function() {
           // computeTotalDistance(directionsDisplay.getDirections());
-          // showWaypoints(directionsDisplay.getDirections());
+          showWaypoints(directionsDisplay.getDirections());
         });
 
 

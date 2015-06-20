@@ -18,14 +18,19 @@
 
 #saved-trips-dropdown a {
   color: #000;
-  font-size: 18px;
+  font-size: 20px;
+}
+
+a#delete-trip-btn {
+ float: right;
+ color: red;
+ font-weight: bolder;
 }
 
 ul.dropdown-menu.pull-right {
   background-image: -webkit-linear-gradient(bottom, #4694FA 10%, #0F5499 70%);
   padding-left: 10%;
   padding-right: 10%;
-  text-align: center;
 }
 
 ul.dropdown-menu.pull-right input {
@@ -44,7 +49,7 @@ ul.dropdown-menu.pull-right input {
   margin-top: 2%;
 }
 
-/*styling for the form in the the center of the index page*/
+/*styling for the form in the the center of the index page
 
 #index-start,
 #index-end {
@@ -202,4 +207,9 @@ html, body, #map-canvas {
 #direction-input {
   margin-top: 10%; 
   margin-left: 10%
+}
+
+td.adp-substep, 
+div.adp-summary {
+  color: white;
 }

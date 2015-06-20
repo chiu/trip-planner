@@ -69,7 +69,9 @@
           <div id = "trip_list"> 
             <% current_user.trips.each do |trip| %>
               <% if trip.title %>
-                <p><%= link_to trip.title, trip_path(trip) %></p>
+                <p><%= link_to trip.title, trip_path(trip) %>
+                 <%= link_to "X", trip_path(trip), id:"delete-trip-btn", method: :delete%>
+                </p>
               <% end %>
             <% end %>
           </div> 
