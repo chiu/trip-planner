@@ -68,14 +68,14 @@
     </button>
     <ul class="dropdown-menu pull-right" role="menu">
       <div id = "trip_list"> 
-      yolo
+      <!-- yolo -->
         <% current_user.trips.each do |trip| %>
         <p> <%= link_to trip_path(trip) %> </p>
-      </br>
+      
       <script type="text/javascript">
         var temp_trip_title = "<%= trip.title %>"
-        $("#trip_list p").append(temp_trip_title);
-        $("#trip_list p").append("</br>");
+        $("#trip_list p").last().append(temp_trip_title);
+        $("#trip_list p").last().append("</br>");
 // $("#trip_list").append("<%= link_to trip_path(trip) %>");
 </script>
 <% end %>
