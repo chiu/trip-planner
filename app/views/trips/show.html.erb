@@ -13,8 +13,9 @@
     <%=f.text_field :go_to ,:id=>"dest_field", placeholder: 'Where do you want to go?' %>
     <button type="button" class="btn btn-info" id="dir-button">Show Map</button>
     <%=f.text_field :title, id:'trip-title', placeholder: 'Trip Title' %>
-  <!--   <button type="button" class="btn btn-info" id="dir-button">Save Trip Now</button> -->
-    <div><%=f.submit "Save Trip" %></div>
+    <!-- <button type="button" class="btn btn-info" id="dir-button">Save Trip Now</button> -->
+    <!-- <div><%=f.submit "Save Trip" %></div> -->
+    <button type="button" class="btn btn-info" id="dir-button"><%=f.submit "Save Trip" %></button> -->
     <% end %>
   </div>
 <!-- <div id='attractions'></div> -->
