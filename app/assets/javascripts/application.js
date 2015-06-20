@@ -25,54 +25,54 @@ var markers = [];
 var markerCluster;
 
 function initialize() {
-  
+
   var vancouver = new google.maps.LatLng(49.2827,-123.1207);
   var richmond = new google.maps.LatLng(49.1667,-123.1333);
 
   var styles = [
-    {
-      featureType: 'road.local',
-      elementType: 'geometry',
-      stylers: [
-          { color: '#c6c6c6' },
-          { hue: '#2200ff' },
-          { visibility: 'simplified' }
-      ]
-    },{
-      featureType: 'road.arterial',
-      elementType: 'all',
-      stylers: [
-        { color: '#66ccff' }
-      ]
-    },{
-      featureType: 'road.arterial',
-      elementType: 'labels',
-      stylers: [
-        { color: '#000000' },
-        { visibility: 'simplified' }
-      ]
-    },{
-      featureType: 'road.highway',
-      elementType: 'all',
-      stylers: [
-        { color: '#ff9933' }
-      ]
-    },{
-      featureType: 'road.highway',
-      elementType: 'labels',
-      stylers: [
-        { color: '#000000' },
-        { visibility: 'simplified' }
-      ]
-    },{
-      featureType: 'water',
-      elementType: 'geometry.fill',
-      stylers: [
+  {
+    featureType: 'road.local',
+    elementType: 'geometry',
+    stylers: [
+    { color: '#c6c6c6' },
+    { hue: '#2200ff' },
+    { visibility: 'simplified' }
+    ]
+  },{
+    featureType: 'road.arterial',
+    elementType: 'all',
+    stylers: [
+    { color: '#66ccff' }
+    ]
+  },{
+    featureType: 'road.arterial',
+    elementType: 'labels',
+    stylers: [
+    { color: '#000000' },
+    { visibility: 'simplified' }
+    ]
+  },{
+    featureType: 'road.highway',
+    elementType: 'all',
+    stylers: [
+    { color: '#ff9933' }
+    ]
+  },{
+    featureType: 'road.highway',
+    elementType: 'labels',
+    stylers: [
+    { color: '#000000' },
+    { visibility: 'simplified' }
+    ]
+  },{
+    featureType: 'water',
+    elementType: 'geometry.fill',
+    stylers: [
           // { color: '#00ddff' },
           { hue: '#00ddff' }
           // { visibility: 'simplified' }
-      ]
-    }
+          ]
+        }
     // ,{
     //   featureType: 'landscape.natural',
     //   elementType: 'all',
@@ -82,20 +82,20 @@ function initialize() {
     //       // { visibility: 'simplified' }
     //   ]
     // }
-  ];
+    ];
 
-  var mapOptions = {
-    mapTypeControlOptions: {
-      mapTypeIds: ['Styled']
-    },
-    center: vancouver,
-    zoom: 11,
-    disableDefaultUI: true 
+    var mapOptions = {
+      mapTypeControlOptions: {
+        mapTypeIds: ['Styled']
+      },
+      center: vancouver,
+      zoom: 11,
+      disableDefaultUI: true 
     // mapTypeId: 'Styled'
   };
 
   map = new google.maps.Map(document.getElementById('map-canvas'),
-      mapOptions);
+    mapOptions);
   var styledMapType = new google.maps.StyledMapType(styles, { name: 'Styled' });
   map.mapTypes.set('Styled', styledMapType);
 
@@ -167,9 +167,9 @@ function enableAutoComplete() {
     var address = '';
     if (place.address_components) {
       address = [
-        (place.address_components[0] && place.address_components[0].short_name || ''),
-        (place.address_components[1] && place.address_components[1].short_name || ''),
-        (place.address_components[2] && place.address_components[2].short_name || '')
+      (place.address_components[0] && place.address_components[0].short_name || ''),
+      (place.address_components[1] && place.address_components[1].short_name || ''),
+      (place.address_components[2] && place.address_components[2].short_name || '')
       ].join(' ');
     }
 
@@ -258,7 +258,7 @@ function createMarker(place) {
         var photo_url = result.photos[0].getUrl({ 'maxWidth': 200, 'maxHeight': 200 });
       console.log(photo_url);
       var content = '<div id="content">'+ '<h4 class="info-heading">' + result.name + '</h4>'
-        + '<img src="'+ photo_url +'">'
+      + '<img src="'+ photo_url +'">'
       +'</div';
       infowindow.setContent(content);
       console.log(result);
@@ -319,6 +319,13 @@ function performSearch() {
 }
 
 
+function addWaypointSave(){
+
+
+
+  $(".gm-title").append("hi add save link here");
+}
+
 // function drawDirections() {
 //   console.log("draw directions happened");
 //   var startlocation = $("#origin_field").val();
@@ -332,4 +339,13 @@ $(function(){
   setTimeout(calcRoute, 100);
   $(document).on("change", "#origin_field", calcRoute);
   $(document).on("change", "#dest_field", calcRoute);
+
+  setInterval(function(){ 
+    //code goes here that will be run every 5 seconds.    
+     addWaypointSave();
+  }, 1000);
+
+
 })
+
+
