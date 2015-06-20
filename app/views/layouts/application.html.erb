@@ -67,13 +67,19 @@
       My Trips test<span class="caret"></span>
      </button>
      <ul class="dropdown-menu pull-right" role="menu">
+fdsfdsfds
+
+<%= current_user %>
+<%= current_user.trips %>
 
         <% current_user.trips.each do |trip| %>
-        
-        <li id="saved-trips-dropdown"><%= trip.start_from %></li>
+        <%= trip.title %>
+    <!--     <li id="saved-trips-dropdown"> add here <%= trip.title %></li> -->
         <% end %>
 
      </ul>
+
+     <script type="text/javascript">$(".caret").append("cool")</script>
    </div>
    <div class="btn-group">
     <button type="button" class="btn btn-info">
