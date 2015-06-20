@@ -198,6 +198,7 @@ function calcRoute() {
   var start = $("#origin_field").val();
   console.log(start);
   var end = $("#dest_field").val();
+  console.log(end);
   if(start != '' && end != '') {
     var request = {
       origin: start,
@@ -328,6 +329,7 @@ function performSearch() {
 // }
 
 $(function(){
+  setTimeout(calcRoute, 100);
   $(document).on("change", "#origin_field", calcRoute);
   $(document).on("change", "#dest_field", calcRoute);
 })

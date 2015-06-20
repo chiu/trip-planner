@@ -1,31 +1,18 @@
-<!-- <h1>Trips#show</h1>
-  <p>Find me in app/views/trips/show.html.erb</p> -->
-
-  <div id="map-canvas"></div>
-
-  <div id='panel'>
-    <h1 id="panel-hdr">Co-Pilot</h1>
-    <div id='search-bar'>
-      <input type="text" name="query" id="query"><button type="button" class="btn btn-info" id="search-button">Search</button>
-    </div>
-    <%= form_for @trip do |f| %>
+<div id="map-canvas"></div>
+<div id='panel'>
+  <h1 id="panel-hdr">Co-Pilot</h1>
+  <div id='search-bar'>
+    <input type="text" name="query" id="query"><button type="button" class="btn btn-info" id="search-button">Search</button>
+  </div>
+  <%= form_for @trip do |f| %>
     <%=f.text_field :start_from ,:id=>"origin_field", placeholder: 'Where are you coming from?' %>
     <%=f.text_field :go_to ,:id=>"dest_field", placeholder: 'Where do you want to go?' %>
     <button type="button" class="btn btn-info" id="dir-button">Show Map</button>
     <%=f.text_field :title, id:'trip-title', placeholder: 'Trip Title' %>
     <%=f.submit "Save Trip", class: "btn btn-info", id: "dir-button"%>
-    <% end %>
-
-<!-- <button type="button" class="btn btn-info" id="dir-button"> -->
-    <%#= link_to('Click here for new trips yay', controller: 'trips',
-        action: 'new', message: 'Welcome!') %>
-<!-- </button>
-  </div>  -->
-
+  <% end %>
+</div>
 <!-- <div id='attractions'></div> -->
-
-
-
 
 <script type="text/javascript">
   google.maps.event.addDomListener(window, 'load', initialize);

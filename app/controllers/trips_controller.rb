@@ -34,14 +34,9 @@ end
 
 def create
   @trip = Trip.new(trip_params)
-
-
     # @trip.user_id = current_user.id
     @trip.user_id = current_user.id
-    puts "hi create was called"
     # @trip.user_id = current_user.id
-
-
 
   if @trip.save
     redirect_to(@trip)
