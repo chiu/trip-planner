@@ -67,24 +67,30 @@
       My Trips<span class="caret"></span>
     </button>
     <ul class="dropdown-menu pull-right" role="menu">
-      <div id = "trip_list"> </div>
-      <% current_user.trips.each do |trip| %>
+      <div id = "trip_list"> 
+      yolo
+        <% current_user.trips.each do |trip| %>
+        <p> <%= link_to trip_path(trip) %> </p>
+      </br>
       <script type="text/javascript">
         var temp_trip_title = "<%= trip.title %>"
-        $("#trip_list").append(temp_trip_title);
-        $("#trip_list").append("</br>");
-      </script>
-      <% end %>
+        $("#trip_list p").append(temp_trip_title);
+        $("#trip_list p").append("</br>");
+// $("#trip_list").append("<%= link_to trip_path(trip) %>");
+</script>
+<% end %>
 
-    </ul>
+</div> 
+
+</ul>
 
 
-  </div>
-  <div class="btn-group">
-    <button type="button" class="btn btn-info">
-      <%= link_to "Logout", session_path("current"), method: :delete %>
-    </button>
-  </div>
+</div>
+<div class="btn-group">
+  <button type="button" class="btn btn-info">
+    <%= link_to "Logout", session_path("current"), method: :delete %>
+  </button>
+</div>
 </div>
 <% end %>  
 <%= yield %>
