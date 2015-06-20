@@ -209,13 +209,13 @@ function calcRoute() {
       if (status == google.maps.DirectionsStatus.OK) {
         var step1 = result.routes[0].legs[0].steps[0].instructions;
         // console.log(result.routes[0]);
-        console.log(step1);
+        //console.log(step1);
         directionsDisplay.setDirections(result);
         directionsDisplay.setMap(map);
-        directionsDisplay.setPanel(document.getElementById('directions'));
+        directionsDisplay.setPanel(document.getElementById('directionsPanel'));
         google.maps.event.addListener(directionsDisplay, 'directions_changed', function() {
           // computeTotalDistance(directionsDisplay.getDirections());
-          showWaypoints(directionsDisplay.getDirections());
+          // showWaypoints(directionsDisplay.getDirections());
         });
 
 
