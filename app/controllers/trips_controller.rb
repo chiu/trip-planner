@@ -16,7 +16,6 @@ end
 #   render :new
 # end
 
-
 def show
   @trip = Trip.find(params[:id])
   # render :show
@@ -62,7 +61,8 @@ end
 def destroy
   @trip = Trip.find(params[:id])
   @trip.destroy
-  redirect_to trips_path
+  @trip = Trip.last
+  redirect_to trip_path(@trip)
 end
 
 protected
@@ -70,7 +70,7 @@ protected
 def trip_params
   params.require(:trip).permit(
 
-    :title, :start_time, :end_time, :description, :trip_image_url, :origin_lat, :origin_lng, :dest_lat, :dest_lng, :hotel, :food, :entertainment, :monument, :nature, :camping, :radius, :public, :start_from, :go_to
+    :title, :start_time, :end_time, :description, :trip_image_url, :origin_lat, :origin_lng, :dest_lat, :dest_lng, :hotel, :food, :entertainment, :monument, :nature, :camping, :radius, :public, :start_from, :go_to, :original_id
     )
 end
 end
