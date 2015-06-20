@@ -136,8 +136,8 @@ html, body, #map-canvas {
   opacity: 0.9; 
   overflow: auto;
   border-radius: 5px;
-  box-shadow: inset 0px 0px 20px 0px #ABABAB;
-  background-image: -webkit-linear-gradient(bottom, #2955AD 100%, #2511BD 100%);
+  box-shadow: inset 0px 0px 20px 0px #000;
+  background-image: -webkit-linear-gradient(bottom, #4694FA 10%, #0F5499 70%);
 }
 
 #panel-hdr {
@@ -147,7 +147,7 @@ html, body, #map-canvas {
   margin-top: 5%;
   margin-bottom: 5%;
   font-family: 'Lobster', cursive;
-  text-shadow: 5px 5px 5px #001349;
+  text-shadow: 5px 5px 5px #000;
 }
 
 #search-bar {
