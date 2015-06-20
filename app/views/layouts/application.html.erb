@@ -29,7 +29,6 @@
           <li><%= f.email_field :email, autofocus: true, id: 'sign-up-email', placeholder: 'Email' %></li>
           <li><%= f.text_field :username, id: 'sign-up-username', placeholder: 'Username' %></li>
           <li><%= f.password_field :password, id: 'sign-up-password', placeholder: 'Password' %></li>
-          <li class="divider"></li>
           <li><%= f.submit "Sign up", id: 'sign-up-btn', class: 'btn btn-info' %></li>
           <% end %>
         </ul>
@@ -42,7 +41,6 @@
           <%= form_for :user, url: users_path do |f| %>
           <li><%= f.text_field :username, id: 'login-username', placeholder: 'Username' %></li>
           <li><%= f.password_field :password, id: 'login-password', placeholder: 'Password' %></li>
-          <li class="divider"></li>
           <li><%= f.submit "Login", id: 'login-btn', class: 'btn btn-info' %></li>
           <% end %>
         </ul>
