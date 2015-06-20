@@ -64,36 +64,30 @@
 
   <div class="btn-group">
     <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-      My Trips dinosaur<span class="caret"></span>
+      My Trips<span class="caret"></span>
     </button>
     <ul class="dropdown-menu pull-right" role="menu">
-      fdsfdsfds
       <div id = "trip_list"> </div>
-
       <% current_user.trips.each do |trip| %>
-
-      <%= puts "hi" %>
-
       <script type="text/javascript">
-        var cool = "<%= trip.title %>"
-        // $("#trip_list").append("hi")
- $("#trip_list").append(cool)
-        </script>
-        <!--     <li id="saved-trips-dropdown"> add here <%= trip.title %></li> -->
-        <% end %>
+        var temp_trip_title = "<%= trip.title %>"
+        $("#trip_list").append(temp_trip_title);
+        $("#trip_list").append("</br>");
+      </script>
+      <% end %>
 
-      </ul>
+    </ul>
 
-      <script type="text/javascript">$(".caret").append("cool")</script>
-    </div>
-    <div class="btn-group">
-      <button type="button" class="btn btn-info">
-        <%= link_to "Logout", session_path("current"), method: :delete %>
-      </button>
-    </div>
+
   </div>
-  <% end %>  
-  <%= yield %>
+  <div class="btn-group">
+    <button type="button" class="btn btn-info">
+      <%= link_to "Logout", session_path("current"), method: :delete %>
+    </button>
+  </div>
+</div>
+<% end %>  
+<%= yield %>
 
 </body> 
 </html>
