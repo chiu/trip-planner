@@ -425,8 +425,8 @@ $(function() {
 
 
     setInterval(function() {
-        feedWaypoint();
-        calcRoute();
+        // feedWaypoint();
+        // calcRoute();
         // $.getJSON(window.location.href + '/waypoints', function(data) {
         //     var address_array = [];
         //     // for (var i = 0; i < data.length; i++) {
