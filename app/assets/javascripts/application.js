@@ -208,6 +208,11 @@ function calcRoute() {
         var request = {
             origin: start,
             destination: end,
+            waypoints: [{
+                location: 'Vancouver, BC'
+            }, {
+                location: 'Richmond, BC'
+            }],
             travelMode: google.maps.TravelMode.DRIVING
         };
         directionsService.route(request, function(result, status) {
