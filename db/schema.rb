@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150620064132) do
+ActiveRecord::Schema.define(version: 20150621015943) do
 
   create_table "journeys", force: :cascade do |t|
     t.integer  "user_id"
@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 20150620064132) do
     t.integer  "trip_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "address"
   end
 
   add_index "waypoints", ["trip_id"], name: "index_waypoints_on_trip_id"
