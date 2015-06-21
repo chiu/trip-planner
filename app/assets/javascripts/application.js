@@ -373,24 +373,22 @@ $(function() {
         var address = $(".gm-addr").text();
         console.log(address);
 
-        var testing = $.ajax({
-            type: "GET",
-            // dataType: "json",
-            url: window.location.href + '/waypoints',
+        // var testing = $.ajax({
+        //     type: "GET",
+        //     // dataType: "json",
+        //     url: window.location.href + '/waypoints',
 
             
 
-        });
+        // });
 
-        $.getJSON(window.location.href + '/waypoints', function(data) {
-  console.log(data); //you'll find your json here
-});
+       
 
 
 
 
-         console.log("ajax call");
-        console.log(testing.data);
+        //  console.log("ajax call");
+        // console.log(testing.data);
 
         $.ajax({
             type: "POST",
@@ -409,15 +407,16 @@ $(function() {
 
 
 
-    // setInterval(function() {
-    //     //code goes here that will be run every 5 seconds.    
-    //     addWaypointSave();
-    // }, 1000);
+    setInterval(function() {
+        //code goes here that will be run every 5 seconds.    
+        // addWaypointSave();
+         $.getJSON(window.location.href + '/waypoints', function(data) {
+  console.log(data); //you'll find your json here
+  console.log(data.lat);
+  console.log(data.address);
+});
+    }, 10000);
 
-    //   setInterval(function(){ 
-    //   //code goes here that will be run every 5 seconds.    
-    //    make_ajax_call();
-    // }, 1000);
-
+   
 
 });

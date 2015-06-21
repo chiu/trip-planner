@@ -6,7 +6,7 @@ respond_to :json
   def index
     # @waypoints = Waypoint.all
     # json Waypoint.all
-    @waypoints = Waypoint.all.find(params[:trip_id])
+    @waypoints = Waypoint.all.find_by trip_id: params[:trip_id]
     render json: @waypoints
   end
 
