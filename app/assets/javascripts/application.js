@@ -354,7 +354,8 @@ $(function(){
     console.log("say hi");
     $.ajax({
       type: "POST",
-      url: '/trips/1/waypoints',
+      url: 'http://localhost:3000/trips/1/waypoints',
+      
       data: { waypoint: { lat: '344344'}},
       
     });
