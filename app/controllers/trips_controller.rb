@@ -26,10 +26,25 @@ def new
   @trip = Trip.new
   # @waypoint = Waypoint.new
   # @waypoint.trip_id = params[:id]
+  waypoint = @trip.waypoints.build
+
+  end
+    
+  end
 end
 
 def edit
+
+  # @new_waypoint_note = Waypoint.new
+  #   @trip = Trip.find(params[:id])
+  #   @trip.new_waypoint_note.build
+
+  # @trip = Trip.find(params[:id])
+  # @trip.waypoints.build
+
+
   @trip = Trip.find(params[:id])
+  @trip.build_new_waypoint
 end
 
 def create
@@ -70,7 +85,7 @@ protected
 def trip_params
   params.require(:trip).permit(
 
-    :title, :start_time, :end_time, :description, :trip_image_url, :origin_lat, :origin_lng, :dest_lat, :dest_lng, :hotel, :food, :entertainment, :monument, :nature, :camping, :radius, :public, :start_from, :go_to
+    :title, :start_time, :end_time, :description, :trip_image_url, :origin_lat, :origin_lng, :dest_lat, :dest_lng, :hotel, :food, :entertainment, :monument, :nature, :camping, :radius, :public, :start_from, :go_to, :user_id
     )
 end
 end
