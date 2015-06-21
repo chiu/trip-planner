@@ -323,8 +323,17 @@ function addWaypointSave(){
 
 
 
-  $(".gm-title").append("hi add save link here");
+  $(".gm-title").append("<button class = 'waypoint_save_link'> Add Place </button>");
 }
+
+
+// function make_ajax_call(){
+
+//    url: "/trip/" + "1" + "waypoints/"
+//    method: "post",
+//    data: { lat: 53, }
+// }
+
 
 // function drawDirections() {
 //   console.log("draw directions happened");
@@ -339,11 +348,19 @@ $(function(){
   setTimeout(calcRoute, 100);
   $(document).on("change", "#origin_field", calcRoute);
   $(document).on("change", "#dest_field", calcRoute);
+   
+
+   $(".waypoint_save_link").on('click', make_ajax_call);
 
   setInterval(function(){ 
     //code goes here that will be run every 5 seconds.    
      addWaypointSave();
   }, 1000);
+
+  //   setInterval(function(){ 
+  //   //code goes here that will be run every 5 seconds.    
+  //    make_ajax_call();
+  // }, 1000);
 
 
 })

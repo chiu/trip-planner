@@ -25,10 +25,6 @@ def new
   # @waypoint.trip_id = params[:id]
   waypoint = @trip.waypoints.build
 
-end
-
-end
-end
 
 def edit
 
@@ -72,8 +68,9 @@ def create
   end
 
   def destroy
-    @trip = Trip.find(params[:id])
-    @trip.destroy
+#     @trip = Trip.find(params[:id])
+#     @trip.destroy
+# <<<<<<< HEAD
     @trip = Trip.last
     redirect_to trip_path(@trip)
   end
@@ -83,6 +80,17 @@ def create
   def trip_params
     params.require(:trip).permit(
       :title, :start_time, :end_time, :description, :trip_image_url, :origin_lat, :origin_lng, :dest_lat, :dest_lng, :hotel, :food, :entertainment, :monument, :nature, :camping, :radius, :public, :start_from, :go_to, :original_id, :user_id
+# =======
+#     redirect_to trips_path
+#   end
+
+#   protected
+
+#   def trip_params
+#     params.require(:trip).permit(
+
+#       :title, :start_time, :end_time, :description, :trip_image_url, :origin_lat, :origin_lng, :dest_lat, :dest_lng, :hotel, :food, :entertainment, :monument, :nature, :camping, :radius, :public, :start_from, :go_to, :user_id
+# >>>>>>> added save button to popup
       )
   end
 end
