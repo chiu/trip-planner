@@ -334,8 +334,10 @@ function addWaypointSave() {
     $(".gm-title").append("<button class = 'favorite'> Add Place </button>");
 }
 
-function timeoutAddWaypointSave(){
-  setTimeout(function(){   addWaypointSave()   },500);
+function timeoutAddWaypointSave() {
+    setTimeout(function() {
+        addWaypointSave()
+    }, 500);
 }
 
 // function make_ajax_call(){
@@ -361,7 +363,7 @@ $(function() {
     $(document).on("change", "#dest_field", calcRoute);
 
     // $("#map-canvas").on('click', addWaypointSave);
-        $("#map-canvas").on('click', timeoutAddWaypointSave);
+    $("#map-canvas").on('click', timeoutAddWaypointSave);
     $("#map-canvas").on('click', '.favorite', function() {
         console.log("say hi");
         console.log(window.location.href);
@@ -370,6 +372,25 @@ $(function() {
         console.log(place_name);
         var address = $(".gm-addr").text();
         console.log(address);
+
+        var testing = $.ajax({
+            type: "GET",
+            // dataType: "json",
+            url: window.location.href + '/waypoints',
+
+            
+
+        });
+
+        $.getJSON(window.location.href + '/waypoints', function(data) {
+  console.log(data); //you'll find your json here
+});
+
+
+
+
+         console.log("ajax call");
+        console.log(testing.data);
 
         $.ajax({
             type: "POST",
@@ -382,6 +403,8 @@ $(function() {
             },
 
         });
+
+
     });
 
 
