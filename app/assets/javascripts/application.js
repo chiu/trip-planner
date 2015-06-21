@@ -378,11 +378,11 @@ $(function() {
         //     // dataType: "json",
         //     url: window.location.href + '/waypoints',
 
-            
+
 
         // });
 
-       
+
 
 
 
@@ -410,13 +410,23 @@ $(function() {
     setInterval(function() {
         //code goes here that will be run every 5 seconds.    
         // addWaypointSave();
-         $.getJSON(window.location.href + '/waypoints', function(data) {
-  console.log(data); //you'll find your json here
-  console.log(data.lat);
-  console.log(data.address);
-});
+        $.getJSON(window.location.href + '/waypoints', function(data) {
+            // console.log(data); //you'll find your json here
+            // console.log(data.lat);
+            // console.log(data.address);
+            var address_array = [];
+            for(var i = 0; i<data.length; i++){
+                console.log(data[i].address);
+                console.log(data[i].lat);
+                address_array.push(data[i].address);
+                console.log(address_array);
+
+            }
+
+        });
+        console.log("print out all address")
     }, 10000);
 
-   
+
 
 });
