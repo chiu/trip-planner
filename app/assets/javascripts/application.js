@@ -350,7 +350,7 @@ $(function(){
   $(document).on("change", "#dest_field", calcRoute);
    
 
-   $(".waypoint_save_link").on('click', make_ajax_call);
+   // $(".waypoint_save_link").on('click', make_ajax_call);
 
   setInterval(function(){ 
     //code goes here that will be run every 5 seconds.    
