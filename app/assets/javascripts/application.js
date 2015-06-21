@@ -352,10 +352,11 @@ $(function(){
 
   $("#map-canvas").on('click', '.favorite', function(){
     console.log("say hi");
+    console.log(window.location.href )
     $.ajax({
       type: "POST",
-      url: 'http://localhost:3000/trips/1/waypoints',
-      
+      url: window.location.href + '/waypoints',
+
       data: { waypoint: { lat: '344344'}},
       
     });
