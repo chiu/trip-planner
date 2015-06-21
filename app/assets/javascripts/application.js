@@ -363,7 +363,7 @@ $(function(){
       type: "POST",
       url: window.location.href + '/waypoints',
 
-      data: { waypoint: { lat: address}},
+      data: { waypoint: { address: address}},
       
     });
   });

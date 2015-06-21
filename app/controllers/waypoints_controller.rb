@@ -67,7 +67,7 @@ def create
 
   def waypoint_params
     params.require(:waypoint).permit(
-      :lat, :lng, :trip_id, :created_at, :updated_at, 
+      :lat, :lng, :trip_id, :created_at, :updated_at, :address,
       )
   end
 
