@@ -348,15 +348,21 @@ $(function(){
   setTimeout(calcRoute, 100);
   $(document).on("change", "#origin_field", calcRoute);
   $(document).on("change", "#dest_field", calcRoute);
-   
 
-   $("#map-canvas").on('click', '.favorite', function(){
+
+  $("#map-canvas").on('click', '.favorite', function(){
     console.log("say hi");
+    $.ajax({
+      type: "POST",
+      url: '/trips/1/waypoints',
+      data: { waypoint: { lat: '344344'}},
+      
+    });
   });
 
   setInterval(function(){ 
     //code goes here that will be run every 5 seconds.    
-     addWaypointSave();
+    addWaypointSave();
   }, 1000);
 
   //   setInterval(function(){ 
