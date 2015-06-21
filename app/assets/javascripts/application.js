@@ -24,6 +24,9 @@ var routeResult;
 var markers = [];
 var markerCluster;
 
+
+
+
 function initialize() {
 
         var vancouver = new google.maps.LatLng(49.2827, -123.1207);
@@ -201,13 +204,26 @@ function enableAutoComplete() {
 function calcRoute() {
     console.log('calcRoute');
     var start = $("#origin_field").val();
-    console.log(start);
+    // console.log(start);
     var end = $("#dest_field").val();
-    console.log(end);
+    // console.log(end);
+    var feedaway = feedWaypoint();
+    console.log("print feedaway start");
+    console.log(feedaway);
+    console.log("print feedaway end");
     if (start != '' && end != '') {
         var request = {
             origin: start,
             destination: end,
+            // waypoints: [{
+            //     location: 'Vancouver, BC'
+            // }, {
+            //     location: 'Richmond, BC'
+            // }, {location: 'North Vancouver, BC V7G 1L3, Canada'}],
+
+            waypoints: feedaway,
+
+
             travelMode: google.maps.TravelMode.DRIVING
         };
         directionsService.route(request, function(result, status) {
@@ -326,12 +342,35 @@ function performSearch() {
 
 
 function addWaypointSave() {
-
-
-
     $(".gm-title").append("<button class = 'favorite'> Add Place </button>");
 }
 
+function timeoutAddWaypointSave() {
+    setTimeout(function() {
+        addWaypointSave()
+    }, 500);
+}
+
+// var address_array = [];
+function feedWaypoint() {
+  var address_array = [];
+    console.log("feedwaypoint triggered");
+    $.getJSON(window.location.href + '/waypoints', function(data) {
+        // var address_array = [];
+        for (var i = 0; i < data.length; i++) {
+            address_array.push({
+                location: data[i].address
+            });
+            // console.log(address_array);
+        }
+        // console.log(address_array);
+        // return address_array;
+    })
+    console.log("whooot");
+    console.log(address_array);
+    return address_array;
+
+}
 
 // function make_ajax_call(){
 
@@ -354,8 +393,9 @@ $(function() {
     setTimeout(calcRoute, 100);
     $(document).on("change", "#origin_field", calcRoute);
     $(document).on("change", "#dest_field", calcRoute);
-
-
+    // $("#map-canvas").on("click", calcRoute);
+    // $("#map-canvas").on('click', addWaypointSave);
+    $("#map-canvas").on('click', timeoutAddWaypointSave);
     $("#map-canvas").on('click', '.favorite', function() {
         console.log("say hi");
         console.log(window.location.href);
@@ -364,6 +404,8 @@ $(function() {
         console.log(place_name);
         var address = $(".gm-addr").text();
         console.log(address);
+
+
 
         $.ajax({
             type: "POST",
@@ -376,17 +418,45 @@ $(function() {
             },
 
         });
+
+
     });
 
-    setInterval(function() {
-        //code goes here that will be run every 5 seconds.    
-        addWaypointSave();
-    }, 1000);
 
-    //   setInterval(function(){ 
-    //   //code goes here that will be run every 5 seconds.    
-    //    make_ajax_call();
-    // }, 1000);
+
+    setInterval(function() {
+        feedWaypoint();
+        calcRoute();
+        // $.getJSON(window.location.href + '/waypoints', function(data) {
+        //     var address_array = [];
+        //     // for (var i = 0; i < data.length; i++) {
+        //     //     address_array.push({
+        //     //         location: data[i].address
+        //     //     });
+        //     //     console.log(address_array);
+        //     // }
+
+
+        //     address_array.each(function(address) {
+        //         hash.set(location, address)
+        //     });
+        //     console.log(hash);
+        // });
+        console.log("print out all address");
+        console.log([{
+            location: 'Vancouver, BC'
+        }, {
+            location: 'Richmond, BC'
+        }]);
+    }, 5000);
+
+
+
+
+
+
+
+
 
 
 });

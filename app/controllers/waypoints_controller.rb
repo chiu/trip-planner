@@ -1,9 +1,13 @@
 class WaypointsController < ApplicationController
 skip_before_action :verify_authenticity_token
 before_filter :load_trip
+respond_to :json
 
   def index
-    @waypoints = Waypoint.all
+    # @waypoints = Waypoint.all
+    # json Waypoint.all
+    @waypoints = Waypoint.where(trip_id: params[:trip_id])
+    render json: @waypoints
   end
 
   def show
