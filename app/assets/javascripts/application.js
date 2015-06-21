@@ -415,7 +415,7 @@ $(function() {
             // console.log(data.lat);
             // console.log(data.address);
             var address_array = [];
-            for(var i = 0; i<data.length; i++){
+            for (var i = 0; i < data.length; i++) {
                 console.log(data[i].address);
                 console.log(data[i].lat);
                 address_array.push(data[i].address);
@@ -426,6 +426,9 @@ $(function() {
         });
         console.log("print out all address")
     }, 10000);
+
+
+
 
 
 
