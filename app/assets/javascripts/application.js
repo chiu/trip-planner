@@ -352,12 +352,18 @@ $(function(){
 
   $("#map-canvas").on('click', '.favorite', function(){
     console.log("say hi");
-    console.log(window.location.href )
+    console.log(window.location.href );
+    // console.log($(".gm-title").text());
+   var place_name = $(".gm-title").text();
+    console.log(place_name);
+   var address = $(".gm-addr").text();
+    console.log(address);
+
     $.ajax({
       type: "POST",
       url: window.location.href + '/waypoints',
 
-      data: { waypoint: { lat: '344344'}},
+      data: { waypoint: { lat: address}},
       
     });
   });
