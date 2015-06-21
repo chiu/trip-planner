@@ -326,12 +326,12 @@ function performSearch() {
 
 
 function addWaypointSave() {
-
-
-
     $(".gm-title").append("<button class = 'favorite'> Add Place </button>");
 }
 
+function timeoutAddWaypointSave(){
+  setTimeout(function(){   addWaypointSave()   },500);
+}
 
 // function make_ajax_call(){
 
@@ -355,7 +355,8 @@ $(function() {
     $(document).on("change", "#origin_field", calcRoute);
     $(document).on("change", "#dest_field", calcRoute);
 
-
+    // $("#map-canvas").on('click', addWaypointSave);
+        $("#map-canvas").on('click', timeoutAddWaypointSave);
     $("#map-canvas").on('click', '.favorite', function() {
         console.log("say hi");
         console.log(window.location.href);
@@ -378,10 +379,12 @@ $(function() {
         });
     });
 
-    setInterval(function() {
-        //code goes here that will be run every 5 seconds.    
-        addWaypointSave();
-    }, 1000);
+
+
+    // setInterval(function() {
+    //     //code goes here that will be run every 5 seconds.    
+    //     addWaypointSave();
+    // }, 1000);
 
     //   setInterval(function(){ 
     //   //code goes here that will be run every 5 seconds.    
