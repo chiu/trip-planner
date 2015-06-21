@@ -323,7 +323,7 @@ function addWaypointSave(){
 
 
 
-  $(".gm-title").append("<button class = 'waypoint_save_link'> Add Place </button>");
+  $(".gm-title").append("<button class = 'favorite'> Add Place </button>");
 }
 
 
@@ -350,7 +350,9 @@ $(function(){
   $(document).on("change", "#dest_field", calcRoute);
    
 
-   // $(".waypoint_save_link").on('click', make_ajax_call);
+   $("#map-canvas").on('click', '.favorite', function(){
+    console.log("say hi");
+  });
 
   setInterval(function(){ 
     //code goes here that will be run every 5 seconds.    
@@ -363,6 +365,6 @@ $(function(){
   // }, 1000);
 
 
-})
+});
 
 
