@@ -393,7 +393,7 @@ $(function() {
     setTimeout(calcRoute, 100);
     $(document).on("change", "#origin_field", calcRoute);
     $(document).on("change", "#dest_field", calcRoute);
-    $("#map-canvas").on("click", calcRoute);
+    // $("#map-canvas").on("click", calcRoute);
     // $("#map-canvas").on('click', addWaypointSave);
     $("#map-canvas").on('click', timeoutAddWaypointSave);
     $("#map-canvas").on('click', '.favorite', function() {
@@ -426,6 +426,7 @@ $(function() {
 
     setInterval(function() {
         feedWaypoint();
+        calcRoute();
         // $.getJSON(window.location.href + '/waypoints', function(data) {
         //     var address_array = [];
         //     // for (var i = 0; i < data.length; i++) {
