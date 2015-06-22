@@ -5,11 +5,33 @@
     <input type="text" name="query" id="query"><button type="button" class="btn btn-info" id="search-button">Search</button>
   </div>
   <%= form_for @trip do |f| %>
-    <%=f.text_field :start_from ,:id=>"origin_field", placeholder: 'Where are you coming from?' %>
-    <%=f.text_field :go_to ,:id=>"dest_field", placeholder: 'Where do you want to go?' %>
-    <button type="button" class="btn btn-info" id="dir-button">Show Map</button>
-    <%=f.text_field :title, id:'trip-title', placeholder: 'Trip Title' %>
-    <%=f.submit "Save Trip", class: "btn btn-info", id: "dir-button"%>
+  <%=f.text_field :start_from ,:id=>"origin_field", placeholder: 'Where are you coming from?' %>
+  <%=f.text_field :go_to ,:id=>"dest_field", placeholder: 'Where do you want to go?' %>
+  <button type="button" class="btn btn-info" id="dir-button">Show Map</button>
+  <%=f.text_field :title, id:'trip-title', placeholder: 'Trip Title' %>
+  <%=f.submit "Save Trip", class: "btn btn-info", id: "dir-button"%>
+  <div id="panel-icons" >
+
+    <img id="hotel" src="/images/hotel.png" alt="hotel">
+    <%= f.check_box :hotel, id: 'hotel-checkbox' %>
+
+    <img id="food" src="/images/food.png" alt="food">
+    <%= f.check_box :food, id: 'food-checkbox' %>
+
+    <img id="entertainment" src="/images/entertainment.png" alt="entertainment">
+    <%= f.check_box :entertainment, id: 'entertainment-checkbox' %>
+
+    <img id="historical" src="/images/historical.png" alt="historical">
+    <%= f.check_box :monument, id: 'monument-checkbox' %>
+
+    <img id="outdoors" src="/images/outdoors.png" alt="outdoors">
+    <%= f.check_box :nature, id: 'outdoors-checkbox' %>
+
+    <img id="camping" src="/images/camping.png" alt="camping">
+    <%= f.check_box :camping, id: 'camping-checkbox' %>
+
+    <!-- <button class="btn btn-info" type="submit" name="submit" id="start-trip-btn">Start Trip</button> -->
+  </div>
   <% end %>
 </div>
 <!-- <div id='attractions'></div> -->

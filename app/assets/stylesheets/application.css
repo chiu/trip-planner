@@ -124,12 +124,16 @@ ul.dropdown-menu.pull-right input {
   margin-right: 1.25%;
 }
 
+/*styling for the show.html page */
+
 html, body, #map-canvas {
   height: 100%;
   margin: 0px;
   padding: 0px;
   width: 100%;
 }
+
+/*styling for the panel on the show.html page*/
 
 #panel {
   position: absolute; 
@@ -208,6 +212,30 @@ html, body, #map-canvas {
 #direction-input {
   margin-top: 10%; 
   margin-left: 10%
+}
+
+#hotel-checkbox,
+#food-checkbox,
+#entertainment-checkbox,
+#monument-checkbox,
+#outdoors-checkbox,
+#camping-checkbox {
+  width: 1em;
+  height: 1.5em;
+  margin-top: 2%;
+}
+
+#panel-icons {
+  margin-left: 3%;
+}
+
+/*styling for the directions dropdown and saved trips dropdown*/
+
+#directions-dropdown,
+#my-saved-trips-dropdown {
+  height: auto;
+  max-height: 465px;
+  overflow-x: hidden; 
 }
 
 td.adp-substep, 
