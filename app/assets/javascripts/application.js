@@ -252,49 +252,49 @@ function calcRoute() {
     }
 }
 
-function callback(results, status) {
-    if (status == google.maps.places.PlacesServiceStatus.OK) {
-        for (var i = 0; i < results.length; i++) {
-            createMarker(results[i]);
-        }
-    }
-}
+// function callback(results, status) {
+//     if (status == google.maps.places.PlacesServiceStatus.OK) {
+//         for (var i = 0; i < results.length; i++) {
+//             createMarker(results[i]);
+//         }
+//     }
+// }
 
-function createMarker(place) {
-    var placeLoc = place.geometry.location;
-    // debugger
-    var marker = new google.maps.Marker({
-        map: map,
-        position: placeLoc,
-    });
-    markerCluster.addMarker(marker);
+// function createMarker(place) {
+//     var placeLoc = place.geometry.location;
+//     // debugger
+//     var marker = new google.maps.Marker({
+//         map: map,
+//         position: placeLoc,
+//     });
+//     markerCluster.addMarker(marker);
 
-    google.maps.event.addListener(marker, 'mouseover', function() {
-        service.getDetails(place, function(result, status) {
-            if (status != google.maps.places.PlacesServiceStatus.OK) {
-                alert(status);
-                return;
-            }
-            if (result.photos != null)
-                var photo_url = result.photos[0].getUrl({
-                    'maxWidth': 200,
-                    'maxHeight': 200
-                });
-            console.log(photo_url);
-            var content = '<div id="content">' + '<h4 class="info-heading">' + result.name + '</h4>' + '<img src="' + photo_url + '">' + '</div';
-            infowindow.setContent(content);
-            console.log(result);
-            // console.log(result.photos[0].photo_reference);
-            // console.log(result.photos[1].getUrl({ 'maxWidth': 80, 'maxHeight': 80 }));
-            infowindow.open(map, marker);
-        });
+//     google.maps.event.addListener(marker, 'mouseover', function() {
+//         service.getDetails(place, function(result, status) {
+//             if (status != google.maps.places.PlacesServiceStatus.OK) {
+//                 alert(status);
+//                 return;
+//             }
+//             if (result.photos != null)
+//                 var photo_url = result.photos[0].getUrl({
+//                     'maxWidth': 200,
+//                     'maxHeight': 200
+//                 });
+//             console.log(photo_url);
+//             var content = '<div id="content">' + '<h4 class="info-heading">' + result.name + '</h4>' + '<img src="' + photo_url + '">' + '</div';
+//             infowindow.setContent(content);
+//             console.log(result);
+//             // console.log(result.photos[0].photo_reference);
+//             // console.log(result.photos[1].getUrl({ 'maxWidth': 80, 'maxHeight': 80 }));
+//             infowindow.open(map, marker);
+//         });
 
-    });
+//     });
 
-    google.maps.event.addListener(marker, 'mouseout', function() {
-        infowindow.close();
-    });
-}
+//     google.maps.event.addListener(marker, 'mouseout', function() {
+//         infowindow.close();
+//     });
+// }
 
 function displayPlaces() {
     var bounds = map.getBounds();
@@ -317,27 +317,85 @@ function displayPlaces() {
 
 
 function performSearch() {
-    service = new google.maps.places.PlacesService(map);
+  for(var i=0; i<routeResult.routes[0].overview_path.length; i+=6) {
+    var ptLat = routeResult.routes[0].overview_path[i].lat();
+    var ptLng = routeResult.routes[0].overview_path[i].lng();
+    attractionsSearch(ptLat, ptLng);
+  }
+}
 
-    var rsRequest = {
-        location: new google.maps.LatLng(47.6097, -122.3331),
-        radius: 10000,
-        keyword: 'city tourism'
-    };
-    service.radarSearch(rsRequest, callback);
+function attractionsSearch(ptLat, ptLng) {
+  var CLIENT_ID = 'WZYNHXEJDKUNPG1BLIWPQAIRM2OVCFXERTL4B4ZYYP0IQ0ZZ';
+  var CLIENT_SECRET = 'QHTBRDEJS2IKCWHWADY2FSRMXKR4ABMDLQGE5HEP1CW5KTJ0';
+  var LATLNG = '47.6097,-122.3331';
 
-    for (var i = 0; i < routeResult.routes[0].overview_path.length; i += 20) {
-        var ptLat = routeResult.routes[0].overview_path[i].lat();
-        var ptLng = routeResult.routes[0].overview_path[i].lng();
-        var ptLatLng = new google.maps.LatLng(ptLat, ptLng);
-        rsRequest = {
-            location: ptLatLng,
-            radius: 20000,
-            // bounds: map.getBounds(),
-            keyword: 'city tourism'
-        };
-        service.radarSearch(rsRequest, callback);
+  var API_ENDPOINT = 'https://api.foursquare.com/v2/venues/explore' +
+  '?client_id=CLIENT_ID' +
+  '&client_secret=CLIENT_SECRET' +
+  '&ll=LAT,LNG' +
+  '&radius=8000' +
+  // '&near=seattle' +
+  '&section=sights' +
+  '&v=20140806' +
+  '&m=foursquare';
+  
+
+  $.getJSON(API_ENDPOINT
+    .replace('CLIENT_ID', CLIENT_ID)
+    .replace('CLIENT_SECRET', CLIENT_SECRET)
+    .replace('LAT', ptLat)
+    .replace('LNG', ptLng), function(data) {
+      var venues = data['response']['groups'][0]['items'];
+      console.log(venues);
+      
+    for (var i = 0; i < venues.length; i++) {
+      console.log(venues[i]['venue']['name']);
+      createMarker(venues[i]['venue']);
     }
+  });
+    
+}
+
+
+function createMarker(venue) {
+  var latlng = new google.maps.LatLng(
+    venue['location']['lat'], 
+    venue['location']['lng']);
+  var marker = new google.maps.Marker({
+    map: map,
+    position: latlng
+  });
+  // markerCluster.addMarker(marker);
+
+  var tag_content = '<div id="info-tag">'+ '<h4 class="info-heading">' + venue['name'] + '</h4>'
+      + '<button type="button">Add</button>'+'</div>';
+  var window_content = '<div id="info-window">'+ '<h4 class="info-heading">' + venue['name'] + '</h4>'
+      +'</div>';
+  infowindow = new google.maps.InfoWindow();
+
+  google.maps.event.addListener(marker, 'mouseover', function() {
+    console.log(marker);
+    infowindow.setContent(tag_content);
+    infowindow.open(map, marker);
+  });
+  google.maps.event.addListener(marker, 'mouseout', function() {
+    infowindow.close();
+  });
+  google.maps.event.addListener(marker, 'click', function() {
+    infowindow.setContent(window_content);
+    infowindow.open(map, marker);
+  });
+}
+
+
+
+Array.prototype.contains = function(elem)
+{
+   for (var i in this)
+   {
+       if (this[i] == elem) return true;
+   }
+   return false;
 }
 
 
