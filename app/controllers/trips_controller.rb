@@ -34,15 +34,13 @@ end
 
 def create
   @trip = Trip.new(trip_params)
-# @trip.user_id = current_user.id
-@trip.user_id = current_user.id
-# @trip.user_id = current_user.id
+  # @trip.user_id = current_user.id
 
-if @trip.save
-  redirect_to(@trip)
-else
-  render :new
-end
+  if @trip.save
+    redirect_to(@trip)
+  else
+    render :new
+  end
 end
 
 def save
@@ -60,11 +58,10 @@ def update
 end
 
 def destroy
-#     @trip = Trip.find(params[:id])
-#     @trip.destroy
-
-@trip = Trip.last
-redirect_to trip_path(@trip)
+  @trip = Trip.find(params[:id])
+  @trip.destroy
+  @trip = Trip.last # set current trip to latest trip
+  redirect_to trip_path(@trip)
 end
 
 protected

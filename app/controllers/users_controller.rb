@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id # auto log in
-      redirect_to :root
+      redirect_to(:back)
     else
       render :new
     end
