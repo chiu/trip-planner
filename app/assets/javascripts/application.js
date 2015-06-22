@@ -202,15 +202,15 @@ function enableAutoComplete() {
 
 
 function calcRoute() {
-    console.log('calcRoute');
+    // console.log('calcRoute');
     var start = $("#origin_field").val();
     // console.log(start);
     var end = $("#dest_field").val();
     // console.log(end);
     var feedaway = feedWaypoint();
-    console.log("print feedaway start");
-    console.log(feedaway);
-    console.log("print feedaway end");
+    // console.log("print feedaway start");
+    // console.log(feedaway);
+    // console.log("print feedaway end");
     if (start != '' && end != '') {
         var request = {
             origin: start,
@@ -354,7 +354,7 @@ function timeoutAddWaypointSave() {
 // var address_array = [];
 function feedWaypoint() {
   var address_array = [];
-    console.log("feedwaypoint triggered");
+    // console.log("feedwaypoint triggered");
     $.getJSON(window.location.href + '/waypoints', function(data) {
         // var address_array = [];
         for (var i = 0; i < data.length; i++) {
@@ -366,8 +366,8 @@ function feedWaypoint() {
         // console.log(address_array);
         // return address_array;
     })
-    console.log("whooot");
-    console.log(address_array);
+    // console.log("whooot");
+    // console.log(address_array);
     return address_array;
 
 }
@@ -426,31 +426,31 @@ $(function() {
 
 
 
-    setInterval(function() {
-        // feedWaypoint();
-        // calcRoute();
-        // $.getJSON(window.location.href + '/waypoints', function(data) {
-        //     var address_array = [];
-        //     // for (var i = 0; i < data.length; i++) {
-        //     //     address_array.push({
-        //     //         location: data[i].address
-        //     //     });
-        //     //     console.log(address_array);
-        //     // }
+    // setInterval(function() {
+    //     // feedWaypoint();
+    //     // calcRoute();
+    //     // $.getJSON(window.location.href + '/waypoints', function(data) {
+    //     //     var address_array = [];
+    //     //     // for (var i = 0; i < data.length; i++) {
+    //     //     //     address_array.push({
+    //     //     //         location: data[i].address
+    //     //     //     });
+    //     //     //     console.log(address_array);
+    //     //     // }
 
 
-        //     address_array.each(function(address) {
-        //         hash.set(location, address)
-        //     });
-        //     console.log(hash);
-        // });
-        console.log("print out all address");
-        console.log([{
-            location: 'Vancouver, BC'
-        }, {
-            location: 'Richmond, BC'
-        }]);
-    }, 5000);
+    //     //     address_array.each(function(address) {
+    //     //         hash.set(location, address)
+    //     //     });
+    //     //     console.log(hash);
+    //     // });
+    //     console.log("print out all address");
+    //     console.log([{
+    //         location: 'Vancouver, BC'
+    //     }, {
+    //         location: 'Richmond, BC'
+    //     }]);
+    // }, 5000);
 
 
 
