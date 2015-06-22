@@ -116,7 +116,7 @@ ul.dropdown-menu.pull-right input {
 #checkbox-hotel,
 #checkbox-food,
 #checkbox-entertainment,
-#checkbox-historical,
+#checkbox-monument,
 #checkbox-outdoors,
 #checkbox-camping {
   width: 1em;
@@ -175,6 +175,7 @@ html, body, #map-canvas {
   height: 35px;
   border-radius: 5px;
   margin-right: 15px;
+  padding-left: 2%;
 }
 
 #search-button {
@@ -191,6 +192,7 @@ html, body, #map-canvas {
   height: 35px;
   margin-left: 8%;
   margin-bottom: 2%;
+  padding-left: 2%;
 }
 
 #dir-button {
