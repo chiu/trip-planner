@@ -70,7 +70,7 @@
             <% current_user.trips.each do |trip| %>
               <% if trip.title %>
                 <p><%= link_to trip.title, trip_path(trip) %>
-                 <%= link_to "X", trip_path(trip), id:"delete-trip-btn", method: :delete%>
+                 <%= link_to "X", trip_path(trip), id:"delete-trip-btn", method: :delete, original_id: @trip.id %>
                 </p>
               <% end %>
             <% end %>

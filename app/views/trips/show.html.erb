@@ -5,6 +5,7 @@
     <input type="text" name="query" id="query"><button type="button" class="btn btn-info" id="search-button">Search</button>
   </div>
   <%= form_for @trip do |f| %>
+<<<<<<< HEAD
   <%=f.text_field :start_from ,:id=>"origin_field", placeholder: 'Where are you coming from?' %>
   <%=f.text_field :go_to ,:id=>"dest_field", placeholder: 'Where do you want to go?' %>
   <button type="button" class="btn btn-info" id="dir-button">Show Map</button>
@@ -32,7 +33,25 @@
 
     <!-- <button class="btn btn-info" type="submit" name="submit" id="start-trip-btn">Start Trip</button> -->
   </div>
+=======
+  <%=f.text_field :start_from ,:id=>"origin_field", placeholder: 'aaa Where are yfdsfdsou coming from?' %>
+  
+  <%=f.text_field :go_to ,:id=>"dest_field", placeholder: 'Where do you want to go?' %>
+  <button type="button" class="btn btn-info" id="dir-button">Show Map</button>
+  <%=f.text_field :title, id:'trip-title', placeholder: 'Trip Title' %>
+
+  <%= f.fields_for :new_waypoint do |builder| %>
+  <%= builder.text_field :lat %>
+  <!-- <%= builder.submit "Save Waypoint" %> -->
   <% end %>
+  
+  <%=f.submit "Save Trip", class: "btn btn-info", id: "dir-button"%>
+>>>>>>> fa4085cea5a0ac5adece41cb8fcf20be84b82d49
+  <% end %>
+
+
+
+
 </div>
 <!-- <div id='attractions'></div> -->
 
