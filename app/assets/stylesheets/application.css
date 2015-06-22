@@ -237,7 +237,7 @@ html, body, #map-canvas {
 #my-saved-trips-dropdown {
   height: auto;
   max-height: 465px;
-  overflow:hidden;
+  overflow-y: scroll;
 }
 
 td.adp-substep, 
