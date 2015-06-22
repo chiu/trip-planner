@@ -74,7 +74,7 @@ function initialize() {
                 featureType: 'water',
                 elementType: 'geometry.fill',
                 stylers: [
-                    // { color: '#00ddff' },
+                    // { color: '#000000' },
                     {
                         hue: '#00ddff'
                     }
@@ -98,7 +98,7 @@ function initialize() {
             },
             center: vancouver,
             zoom: 11,
-            disableDefaultUI: true
+            disableDefaultUI: true,
                 // mapTypeId: 'Styled'
         };
 
@@ -109,7 +109,13 @@ function initialize() {
         });
         map.mapTypes.set('Styled', styledMapType);
 
-        directionsDisplay = new google.maps.DirectionsRenderer();
+        directionsDisplay = new google.maps.DirectionsRenderer({
+          polylineOptions: {
+            strokeColor: '#000000',
+            strokeWeight: 6,
+            strokeOpacity: .4
+          }
+        });
         directionsService = new google.maps.DirectionsService();
         service = new google.maps.places.PlacesService(map);
         markerCluster = new MarkerClusterer(map, markers);
@@ -520,3 +526,5 @@ $(function() {
 
 
 });
+
+
