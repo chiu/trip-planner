@@ -11,10 +11,10 @@
   <%=f.text_field :title, id:'trip-title', placeholder: 'Trip Title' %>
   <%=f.submit "Save Trip", class: "btn btn-info", id: "dir-button"%>
 
-  <%#= f.fields_for :new_waypoint do |builder| %>
-  <%#= builder.text_field :lat %>
-   <%#= builder.submit "Save Waypoint" %>
-  <%# end %>
+  <%= f.fields_for :new_waypoint do |builder| %>
+  <%= builder.text_field :lat %>
+   <%= builder.submit "Save Waypoint" %>
+  <% end %>
 
   <div id="panel-icons" >
 
