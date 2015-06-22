@@ -238,7 +238,6 @@ html, body, #map-canvas {
   height: auto;
   max-height: 465px;
   overflow-y: scroll;
-   
 }
 
 td.adp-substep, 
