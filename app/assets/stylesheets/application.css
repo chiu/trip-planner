@@ -146,7 +146,7 @@ html, body, #map-canvas {
   opacity: 0.9; 
   overflow: auto;
   border-radius: 5px;
-  box-shadow: inset 0px 0px 20px 0px #000;
+  box-shadow: 5px -4px 28px -2px rgba(0,0,0,0.75), inset 0px 0px 40px 0px #000; 
   background-image: -webkit-linear-gradient(bottom, #4694FA 10%, #0F5499 70%);
 }
 
