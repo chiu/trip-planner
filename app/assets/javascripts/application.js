@@ -288,6 +288,19 @@ function calcRoute() {
               directionsDisplay.setDirections(result);
               directionsDisplay.setMap(map);
               directionsDisplay.setPanel(document.getElementById('directions'));
+
+              var leg = result.routes[ 0 ].legs[ 0 ];
+                var start = {
+                  url: '/images/startIcon.png',
+                  scaledSize: new google.maps.Size( 100, 100 )
+                };
+                var end = {
+                  url: '/images/endIcon.png',
+                  scaledSize: new google.maps.Size( 75, 75 )
+                };
+                makeMarker( leg.start_location, start, "title" );
+                makeMarker( leg.end_location, end, 'title' );
+              
               google.maps.event.addListener(directionsDisplay, 'directions_changed', function() {
                   // computeTotalDistance(directionsDisplay.getDirections());
                   showWaypoints(directionsDisplay.getDirections());
