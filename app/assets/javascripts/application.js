@@ -138,8 +138,8 @@ function initialize() {
     mapTypeId: 'Styled'
   };
 
-  map = new google.maps.Map(document.getElementById('map-canvas'),
-    mapOptions);
+  map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
   var styledMapType = new google.maps.StyledMapType(styles, {
     name: 'Styled'
   });
@@ -149,13 +149,16 @@ function initialize() {
     polylineOptions: {
       strokeColor: '#000000',
       strokeWeight: 6,
-      strokeOpacity: 0.4
+      strokeOpacity: 0.4,
+      suppressMarkers: true
     }
   }); /* styling for the route line ends */
+
   
   directionsService = new google.maps.DirectionsService();
   service = new google.maps.places.PlacesService(map);
-  markerCluster = new MarkerClusterer(map, markers);
+  // markerCluster = new MarkerClusterer(map, markers);
+
 
   infowindow = new google.maps.InfoWindow();
 
@@ -178,7 +181,6 @@ function initialize() {
         enableAutoComplete();
     } //initialize
 
-
     function enableAutoComplete() {
       var input = document.getElementById('query');
 
@@ -188,8 +190,21 @@ function initialize() {
     // var infowindow = new google.maps.InfoWindow();
     var marker = new google.maps.Marker({
       map: map,
+      icon: '',
       anchorPoint: new google.maps.Point(0, -29)
     });
+
+    // starting location image changed
+
+  // var image = '/images/startIcon.png';
+  // var myLatLng = new google.maps.LatLng(49.2827, -123.1207);
+  // var startIcon = new google.maps.Marker({
+  //   position: myLatLng,
+  //   map: map,
+  //   icon: image,
+  // });
+
+
 
     google.maps.event.addListener(autocomplete, 'place_changed', function() {
       infowindow.close();
@@ -553,7 +568,14 @@ $(function() {
     //     }]);
     // }, 5000);
 
+// var endIcon = new google.maps.MarkerImage('/images/endIcon.png');
+// var startIcon = new google.maps.MarkerImage('/images/startIcon.png');
 
+// marker = new google.maps.Marker({
+//   position: point,
+//   map: map,
+//   icon: endIcon
+// });
 
 
 
