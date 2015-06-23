@@ -13,7 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require front_page
-//= require_tree .
+//= require_tree 
 
 var map;
 var infoWindow;
@@ -145,20 +145,53 @@ function initialize() {
   });
   map.mapTypes.set('Styled', styledMapType);
 
+
+  directionsService = new google.maps.DirectionsService();
+  service = new google.maps.places.PlacesService(map);
   directionsDisplay = new google.maps.DirectionsRenderer({ /* styling for the route line begins */
     polylineOptions: {
       strokeColor: '#000000',
       strokeWeight: 6,
-      strokeOpacity: 0.4,
-      suppressMarkers: true
-    }
-  }); /* styling for the route line ends */
+      strokeOpacity: 0.4
+    },
+    suppressMarkers: true
+   }); /* styling for the route line ends */
+
 
   
-  directionsService = new google.maps.DirectionsService();
-  service = new google.maps.places.PlacesService(map);
-  // markerCluster = new MarkerClusterer(map, markers);
 
+  // var icons = {
+  //   start: new google.maps.MarkerImage(
+  //  // URL
+  //  'public/images/startIcon.png',
+  //  // (width,height)
+  //  new google.maps.Size( 44, 32 ),
+  //  // The origin point (x,y)
+  //  new google.maps.Point( 0, 0 ),
+  //  // The anchor point (x,y)
+  //  new google.maps.Point( 22, 32 )
+  //  ),
+  //   end: new google.maps.MarkerImage(
+  //  // URL
+  //  'public/images/endIcon.png',
+  //  // (width,height)
+  //  new google.maps.Size( 44, 32 ),
+  //  // The origin point (x,y)
+  //  new google.maps.Point( 0, 0 ),
+  //  // The anchor point (x,y)
+  //  new google.maps.Point( 22, 32 )
+  //  )
+  // };
+  
+
+//   service.route( { origin: origin, destination: destination }, function( response, status ) {
+//    if ( status == google.maps.DirectionsStatus.OK ) {
+//     display.setDirections( response );
+//     var leg = response.routes[ 0 ].legs[ 0 ];
+//     makeMarker( leg.start_location, icons.start, "title" );
+//     makeMarker( leg.end_location, icons.end, 'title' );
+//   }
+// });
 
   infowindow = new google.maps.InfoWindow();
 
@@ -181,6 +214,15 @@ function initialize() {
         enableAutoComplete();
     } //initialize
 
+  function makeMarker( position, icon, title ) {
+   new google.maps.Marker({
+    position: position,
+    map: map,
+    icon: icon,
+    title: title
+  });
+ }
+
     function enableAutoComplete() {
       var input = document.getElementById('query');
 
@@ -197,9 +239,11 @@ function initialize() {
     // starting location image changed
 
   // var image = '/images/startIcon.png';
-  // var myLatLng = new google.maps.LatLng(49.2827, -123.1207);
+  // // var myLatLng = new google.maps.LatLng(49.2827, -123.1207);
+  // var start = new google.maps.start;
   // var startIcon = new google.maps.Marker({
-  //   position: myLatLng,
+  //   position: start,
+  //   animation: google.maps.Animation.DROP,
   //   map: map,
   //   icon: image,
   // });
@@ -292,6 +336,19 @@ function initialize() {
                 directionsDisplay.setDirections(result);
                 directionsDisplay.setMap(map);
                 directionsDisplay.setPanel(document.getElementById('directions'));
+
+                var leg = result.routes[ 0 ].legs[ 0 ];
+                var start = {
+                  url: '/images/startIcon.png',
+                  scaledSize: new google.maps.Size( 100, 100 )
+                };
+                var end = {
+                  url: '/images/endIcon.png',
+                  scaledSize: new google.maps.Size( 75, 75 )
+                };
+                makeMarker( leg.start_location, start, "title" );
+                makeMarker( leg.end_location, end, 'title' );
+
                 google.maps.event.addListener(directionsDisplay, 'directions_changed', function() {
                     // computeTotalDistance(directionsDisplay.getDirections());
                     showWaypoints(directionsDisplay.getDirections());
