@@ -1,4 +1,16 @@
 class TripsController < ApplicationController
+
+
+  def invited_trips
+
+
+  @trip = Trip.all
+       
+   render :invited_trips
+
+  end
+
+
   def index
     @trips = Trip.all
   end
