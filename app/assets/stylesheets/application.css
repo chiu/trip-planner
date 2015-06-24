@@ -1,3 +1,9 @@
+/*
+ *= require_tree .
+ *= require social-share-button
+ *= require_self
+ */
+
 /*styling for the btns at the top of the index page*/
 
 #index-btns {
@@ -11,6 +17,22 @@
 #index-btns a {
   color: #FFF;
 }
+
+#social-btns {
+  right: 0;
+  margin-right: 2px;
+  margin-top: 2px;
+  z-index: 444;
+  position: absolute;
+}
+
+/*Can style individual social share buttons like this:
+.social-share-button-facebook {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background: url("/social/facebook.png") no-repeat;
+}*/
 
 #my-trips-btn {
   margin-left: -10%;

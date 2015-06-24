@@ -83,6 +83,11 @@
           <%= link_to "Logout", session_path("current"), method: :delete %>
         </button>
       </div>
+      <% if @trip.title %>
+        <div id="social-btns">
+          <%= social_share_button_tag(@trip.title, popup: "true") %>
+        </div>
+      <% end %>
     </div>
   <% end %>  
   <%= yield %>
