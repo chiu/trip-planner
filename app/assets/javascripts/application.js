@@ -21,13 +21,13 @@ var directionsDisplay;
 var directionsService;
 var service;
 var routeResult;
-var hotelMarkers = [];
-var restaurantMarkers = [];
-var entMarkers = [];   
-var monumentMarkers = [];
-var outdoorsMarkers = [];
-var campingMarkers = [];
-var markerCluster;
+var hotel = {markers: [], counter: 0};
+var restaurant = {markers: [], counter: 0};
+var ent = {markers: [], counter: 0};
+var monument = {markers: [], counter: 0};
+var outdoors = {markers: [], counter: 0};
+var camping = {markers: [], counter: 0};
+var types = [hotel, restaurant, ent, monument, outdoors, camping];
 
 
 function initialize() {
@@ -352,7 +352,7 @@ function createMarker(venue, query) {
   });
   // markerCluster.addMarker(marker);
   
-  getMarkers(query).push(marker);
+  getType(query).markers.push(marker);
 
   var tag_content = '<div id="info-tag">'+ '<h4 class="info-heading">' + venue['name'] + '</h4>'
       +'</div>';
@@ -421,62 +421,77 @@ function feedWaypoint() {
 
   }
 
-// function make_ajax_call(){
 
-//    url: "/trip/" + "1" + "waypoints/"
-//    method: "post",
-//    data: { lat: 53, }
-// }
-
-
-// function drawDirections() {
-//   console.log("draw directions happened");
-//   var startlocation = $("#origin_field").val();
-//   console.log("start:", startlocation);
-//   var endlocation = $("#dest_field").val();
-//   console.log("end:", endlocation);
-//   calcRoute(startlocation, endlocation);
-// }
-function getMarkers(query) {
+function getType(query) {
   switch(query) {
     case 'hotel':
-        return hotelMarkers;
+        return types[0];
         break;
     case 'restaurant':
-        return restaurantMarkers;
+        return types[1];
         break;
     case 'entertainment':
-        return entMarkers;
+        return types[2];
         break;
     case 'monument':
-        return monumentMarkers;
+        return types[3];
         break;
     case 'outdoors':
-        return outdoorsMarkers;
+        return types[4];
         break;
     case 'camping':
-        return campingMarkers;
+        return types[5];
         break;
     // default:
     //     default code block
   }
 }
+function setType(query) {
+  switch(query) {
+    case 'hotel':
+        types[0].counter++;
+        break;
+    case 'restaurant':
+        types[1].counter++;
+        break;
+    case 'entertainment':
+        types[2].counter++;
+        break;
+    case 'monument':
+        types[3].counter++;
+        break;
+    case 'outdoors':
+        types[4].counter++;
+        break;
+    case 'camping':
+        types[5].counter++;
+        break;
+  }
+}
 
+function clearTypeProperties() {
+  for(var i=0; i<types.length; i++){
+    types[i].markers = [];
+    types[i].counter = 0;
+  }
+}
 
 $(function() {
-  var checkboxCount = 0;
-  setTimeout(calcRoute, 100);
+  // setTimeout(calcRoute, 100);
   $(document).on("change", "#origin_field", calcRoute);
   $(document).on("change", "#dest_field", calcRoute);
   $(document).on("change", ":checkbox", function() {
     var query = $(this).attr("name");
+    var markers = getType(query).markers;
+    var counter = getType(query).counter;
     console.log(query);
-    if(checkboxCount == 0)
+    if(counter == 0)
       performSearch(query);
-    var markers = getMarkers(query);
+    
     for (var i=0; i < markers.length; i++)
       markers[i].setVisible($(this).prop("checked"));
-    checkboxCount++;
+    setType(query);
+
   });
 
 
@@ -510,50 +525,6 @@ $(function() {
 
 
       });
-
-
-
-    // setInterval(function() {
-    //     // feedWaypoint();
-    //     // calcRoute();
-    //     // $.getJSON(window.location.href + '/waypoints', function(data) {
-    //     //     var address_array = [];
-    //     //     // for (var i = 0; i < data.length; i++) {
-    //     //     //     address_array.push({
-    //     //     //         location: data[i].address
-    //     //     //     });
-    //     //     //     console.log(address_array);
-    //     //     // }
-
-
-    //     //     address_array.each(function(address) {
-    //     //         hash.set(location, address)
-    //     //     });
-    //     //     console.log(hash);
-    //     // });
-    //     console.log("print out all address");
-    //     console.log([{
-    //         location: 'Vancouver, BC'
-    //     }, {
-    //         location: 'Richmond, BC'
-    //     }]);
-    // }, 5000);
-
-// var endIcon = new google.maps.MarkerImage('/images/endIcon.png');
-// var startIcon = new google.maps.MarkerImage('/images/startIcon.png');
-
-// marker = new google.maps.Marker({
-//   position: point,
-//   map: map,
-//   icon: endIcon
-// });
-
-
-
-
-
-
-
 
 });
 
