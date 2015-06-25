@@ -5,8 +5,9 @@ class SharedTripsController < ApplicationController
 
 
   def index
-
+    @shared_trips = SharedTrip.all
     @trips = Trip.all
+    @users = User.all
     render layout: false
 
   end
@@ -23,11 +24,12 @@ class SharedTripsController < ApplicationController
 
 
   def create
-    @shared_trip = SharedTrip.new(shared_trip_params)
-    @shared_trip.user_id = params[:user_id]
-    @shared_trip.trip_id = params[:trip_id]
+    # @shared_trip = SharedTrip.new(shared_trip_params)
+    # @shared_trip.user_id = params[:user_id]
+    # @shared_trip.trip_id = params[:trip_id]
     # @shared_trip.user_id = params[:user_id]
 
+@shared_trip = @trip.shared_trips.build(shared_trip_params)
 
     if @shared_trip.save
       redirect_to trip_shared_trips_path

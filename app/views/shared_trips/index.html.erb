@@ -1,16 +1,24 @@
-<h1>Trips#index</h1>
+<h1>sharedtrips#index</h1>
 <p>Find me in app/views/shared trips </p>
 
-
-hi ello i am index
-
-
-<h1>Trips#index</h1>
-<p>Find me in app/views/trips/index.html.erb</p>
+Shared Trip Dashboard
 
 
 
-<h1>Copilot</h1>
+<!-- <h1>Copilot</h1> -->
+
+
+<h3> List of all users added to this trip </h3>
+<% @users.each do |user| %>
+
+<p><%= user.username %></p>
+<hr>
+<% end %>
+
+
+
+
+<h2> List of all trips </h2>
 <%= link_to "Send an invitation to a friend to share this trip!", new_trip_shared_trip_path %>
 <hr>
 <% @trips.each do |trip| %>
