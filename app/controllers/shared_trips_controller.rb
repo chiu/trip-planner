@@ -28,7 +28,7 @@ class SharedTripsController < ApplicationController
     @shared_trip.trip_id = params[:trip_id]
 
     if @shared_trip.save
-      redirect_to(@shared_trip)
+      redirect_to(:back)
     else
       render :new
     end
