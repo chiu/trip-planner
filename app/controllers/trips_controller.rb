@@ -6,7 +6,9 @@ class TripsController < ApplicationController
 
   @trip = Trip.all
        
-   render :invited_trips
+       # render :layout => false
+   # render :invited_trips
+   layout :invited_trips
 
   end
 
