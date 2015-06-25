@@ -12,6 +12,7 @@ gem 'sqlite3'
 # gem 'turbolinks'
 gem 'uglifier', '>= 1.3.0'
 gem 'responders', '~> 2.0'
+gem 'social-share-button', '~> 0.1.8'
 
 group :development, :test do
   gem 'byebug'

@@ -1,9 +1,16 @@
 Rails.application.routes.draw do
 
-  resources :users, only: [:new, :create, :show]
+  get 'invited_trips', :to => 'trips#invited_trips'
+ # get 'send_invitations', :to => 'shared_trips#send_invitations'
+
+
+  resources :users, only: [:new, :create, :show] 
+  
+
 
   resources :trips do
     resources :waypoints
+    resources :shared_trips
   end 
 
   resource :session, only: [:new, :create, :destroy]

@@ -54,7 +54,7 @@
         <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
           Directions <span class="caret"></span>
         </button>
-        <ul class="dropdown-menu pull-right" role="menu">
+        <ul class="dropdown-menu pull-right" id="directions-dropdown" role="menu">
           <div id = "directions"> 
             
           </div> 
@@ -65,7 +65,7 @@
         <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
           My Trips <span class="caret"></span>
         </button>
-        <ul class="dropdown-menu pull-right" role="menu">
+        <ul class="dropdown-menu pull-right" id="my-saved-trips-dropdown" role="menu">
           <div id = "trip_list"> 
             <% current_user.trips.each do |trip| %>
               <% if trip.title %>
@@ -83,6 +83,11 @@
           <%= link_to "Logout", session_path("current"), method: :delete %>
         </button>
       </div>
+      <% if @trip.title %>
+        <div id="social-btns">
+          <%= social_share_button_tag(@trip.title, popup: "true") %>
+        </div>
+      <% end %>
     </div>
   <% end %>  
   <%= yield %>

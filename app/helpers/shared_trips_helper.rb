@@ -1,0 +1,2 @@
+module SharedTripsHelper
+end

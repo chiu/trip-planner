@@ -1,0 +1,26 @@
+Searching 381 files for "original_id: @trip.id " (regex, case sensitive)
+
+/Users/aardax/lighthouse/w9d1/trip_planner_folder_foursquare/app/views/layouts/application.html.erb:
+   71                <% if trip.title %>
+   72                  <p><%= link_to trip.title, trip_path(trip) %>
+   73:                  <%= link_to "X", trip_path(trip), id:"delete-trip-btn", method: :delete, original_id: @trip.id %>
+   74                  </p>
+   75                <% end %>
+
+~/lighthouse/w9d1/trip_planner_folder_foursquare/log/development.log:
+    <binary>
+
+3 matches across 2 files
+
+
+Searching 381 files for "<%= link_to "X", trip_path(trip), id:"delete-trip-btn", method: :delete, original_id: @trip.id %>" (regex, case sensitive)
+
+0 matches
+
+Searching 381 files for "<%= link_to "X", trip_path(trip), id:"delete-trip-btn", method: :delete, original_id: @trip.id %>" (regex, case sensitive)
+
+0 matches
+
+Searching 381 files for " trip_path(trip), id:"delete-trip-btn", method: :delete, original_id: @trip.id %>" (regex, case sensitive)
+
+0 matches
