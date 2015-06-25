@@ -16,7 +16,7 @@ class SharedTripsController < ApplicationController
 
     @users = User.all
     # @trip = Trip.find(params[:trip_id])
-    @SharedTrip = SharedTrip.new
+    @shared_trip = SharedTrip.new
     render layout: false
 
   end
