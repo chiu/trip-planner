@@ -16,9 +16,37 @@ Shared Trip Dashboard
 <% end %>
 
 
+<h3> List of all shared trips </h3>
 
 
-<h2> List of all trips </h2>
+<% @shared_trips.each do |shared_trip| %>
+
+<h3> trip id: <%= shared_trip.trip_id %></h3>
+<h3> user  id: <%= shared_trip.user_id %></h3>
+<h3> shared id: <%= shared_trip.shared_id %></h3>
+
+<h3> User who owns that shared id: 
+<% if @users.find(shared_trip.shared_id) %>
+<%= found it %>
+
+<% else %>
+<%= Could nt find user with that id %>
+
+<% end %>
+</h3>
+<hr>
+<% end %>
+
+
+
+
+
+
+
+
+
+
+<h2>ignore this:  List of all trips </h2>
 <%= link_to "Send an invitation to a friend to share this trip!", new_trip_shared_trip_path %>
 <hr>
 <% @trips.each do |trip| %>
