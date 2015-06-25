@@ -5,5 +5,24 @@
 hi ello i am index
 
 
+<h1>Trips#index</h1>
+<p>Find me in app/views/trips/index.html.erb</p>
+
+
+
+<h1>Copilot</h1>
+<%= link_to "Submit a trip!", new_trip_path %>
+<hr>
+<% @trips.each do |trip| %>
+<%= link_to image_tag(trip.trip_image_url), trip_path(trip) %>
+<h2><%= link_to trip.title %></h2>
+<h3><%= trip.start_time %></h3>
+<p><%= trip.description %></p>
+<hr>
+<% end %>
+
+
+
+
 
 

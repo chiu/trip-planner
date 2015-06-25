@@ -2,9 +2,10 @@ class SharedTripsController < ApplicationController
 
  def index
 
-render layout: false
+  @trip = Trip.all
+  render layout: false
 
- end
+end
 
 
 
