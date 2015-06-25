@@ -8,15 +8,15 @@ Shared Trip Dashboard
 <!-- <h1>Copilot</h1> -->
 
 
-<h3> List of all users added to this trip </h3>
+<!-- <h3> List of all users added to this trip </h3>
 <% @users.each do |user| %>
 
 <p><%= user.username %></p>
 <hr>
-<% end %>
+<% end %> -->
 
 
-<h3> List of all shared trips </h3>
+<h3> List of all users invited to view this trip: </h3>
 
 
 <% @shared_trips.each do |shared_trip| %>
@@ -27,7 +27,8 @@ Shared Trip Dashboard
 
 <h3> User who owns that shared id: 
 <% if @users.find(shared_trip.shared_id) %>
-found it
+
+<%= @users.find(shared_trip.shared_id).username %>
 
 <% else %>
 Could nt find user with that id
@@ -46,7 +47,7 @@ Could nt find user with that id
 
 
 
-<h2>ignore this:  List of all trips </h2>
+<!-- <h2>ignore this:  List of all trips </h2>
 <%= link_to "Send an invitation to a friend to share this trip!", new_trip_shared_trip_path %>
 <hr>
 <% @trips.each do |trip| %>
@@ -56,7 +57,7 @@ Could nt find user with that id
 <p><%= trip.description %></p>
 <hr>
 <% end %>
-
+ -->
 
 
 
