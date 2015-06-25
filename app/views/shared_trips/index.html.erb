@@ -11,7 +11,7 @@ hi ello i am index
 
 
 <h1>Copilot</h1>
-<%= link_to "Submit a trip!", new_trip_path %>
+<%= link_to "Send an invitation to a friend to share this trip!", new_trip_shared_trip_path %>
 <hr>
 <% @trips.each do |trip| %>
 <%= link_to image_tag(trip.trip_image_url), trip_path(trip) %>
