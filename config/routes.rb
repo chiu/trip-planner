@@ -3,11 +3,12 @@ Rails.application.routes.draw do
   get 'invited_trips', :to => 'trips#invited_trips'
 
   resources :users, only: [:new, :create, :show] 
-  resources :shared_trips
+  
 
 
   resources :trips do
     resources :waypoints
+    resources :shared_trips
   end 
 
   resource :session, only: [:new, :create, :destroy]
