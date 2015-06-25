@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class SharedTripControllerTest < ActionController::TestCase
+class SharedTripsControllerTest < ActionController::TestCase
   # test "the truth" do
   #   assert true
   # end
